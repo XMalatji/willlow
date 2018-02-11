@@ -24,11 +24,13 @@ import { TeachersViewComponent } from './comps/teachers-view/teachers-view.compo
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AModalComponent } from '@app/shared/a-modal/a-modal.component';
 import { ClassCompComponent } from './comps/class-comp/class-comp.component';
-import { CalendarComponent } from './comps/calendar/calendar.component';
+
 import { CalendarModule } from 'angular-calendar';
 import { AddstudentComponent } from './comps/student/addstudent/addstudent.component';
 import { SubnavComponent } from './comps/subnav/subnav.component';
 import { StudentsComponent } from './comps/student/students/students.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarComponent } from './comps/calendar/calendar.component';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { StudentsComponent } from './comps/student/students/students.component';
     BrowserModule,
     ToastrModule.forRoot(),
     NgbModule.forRoot(),
+    NgbModalModule.forRoot(),
     CalendarModule.forRoot(),
     // core & shared
     CoreModule,
@@ -52,8 +55,8 @@ import { StudentsComponent } from './comps/student/students/students.component';
   ],
   declarations: [
     AppComponent, HeaderComponent, FooterComponent,
-     HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
-      TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, AddstudentComponent, SubnavComponent, StudentsComponent
+     HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,CalendarComponent,
+      TeachersViewComponent, AModalComponent, ClassCompComponent, AddstudentComponent, SubnavComponent, StudentsComponent
     ],
   providers: [  UserService, TeachersService],
   bootstrap: [AppComponent]

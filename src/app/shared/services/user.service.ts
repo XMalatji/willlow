@@ -20,7 +20,7 @@ const httpOptions = {
 @Injectable()
 export class UserService implements OnInit {
   theUser : {};
-  isAuthenticated:boolean=false;
+  isAuthenticated:boolean=true;
   userToken: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
