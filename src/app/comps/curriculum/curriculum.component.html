@@ -2,7 +2,7 @@
    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
    <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-         <ng-template matStepLabel>Fill out your name</ng-template>
+         <ng-template matStepLabel>Curriculum</ng-template>
          <div>
             <mat-form-field>
                <mat-select placeholder="Select curriculum" formControlName="firstCtrl" required>
@@ -19,7 +19,7 @@
    </mat-step>
    <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-         <ng-template matStepLabel>Fill out your address</ng-template>
+         <ng-template matStepLabel>School grade</ng-template>
          <mat-form-field>
             <mat-select placeholder="Select grade" formControlName="secondCtrl" required>
                <mat-option *ngFor="let grade of grades" [value]="grade.value">
@@ -33,38 +33,112 @@
          </div>
       </form>
    </mat-step>
-
    <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-         <ng-template matStepLabel>Fill out your address</ng-template>
+         <ng-template matStepLabel>Add subjects</ng-template>
          <mat-form-field class="demo-chip-list">
-           <mat-chip-list #chipList>
-             <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                      [removable]="removable" (remove)="remove(fruit)">
-               {{fruit.name}}
+            <mat-chip-list #chipList>
+               <mat-chip *ngFor="let subject of subjects" [selectable]="selectable"
+               [removable]="removable" (remove)="remove(subject)">
+               {{subject.name}}
                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-             </mat-chip>
-             <input placeholder="New fruit..."
-                    [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                    [matChipInputAddOnBlur]="addOnBlur"
-                    (matChipInputTokenEnd)="add($event)" />
-           </mat-chip-list>
+               </mat-chip>
+               <input placeholder="Enter subject's names"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
          </mat-form-field>
          <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext>Done</button>
          </div>
       </form>
    </mat-step>
-
-   <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-         <button mat-button matStepperPrevious>Back</button>
-         <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-   </mat-step>
    </mat-horizontal-stepper>
+   <br/>
+   <div class="row">
+   <div class="col-md-6">
+      <div class="docs-example-viewer-title">
+          <div class="docs-example-viewer-title-spacer custom-table-heading">National</div>
+      </div>
+      <br/>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+   </div>
+
+   <div class="col-md-6">
+      <div class="docs-example-viewer-title">
+          <div class="docs-example-viewer-title-spacer custom-table-heading">Cambridge</div>
+      </div>
+      <br/>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+   </div>
+   </div>
 </div>

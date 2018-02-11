@@ -1,95 +1,61 @@
-<nav mat-tab-nav-bar>
-  <a mat-tab-link (click)="addClasses(1)">Add Classes</a>
-  <a mat-tab-link (click)="addStudent()">Add Students</a>
+<div class="container">
+   <div class="example-container">
 
-</nav>
-
-
-<form name="addForm" [formGroup]="addForm">
-  <div class="container" *ngIf="viewClassMode">
-    <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="dataSource">
-
-        <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="grade">
-          <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="className">
-          <mat-header-cell *matHeaderCellDef> Class Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.className}} </mat-cell>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="classTeacher">
-          <mat-header-cell *matHeaderCellDef> Class Teacher </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.classTeacher}} </mat-cell>
-        </ng-container>
-
-
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectTeacher(row)"></mat-row>
-      </mat-table>
-    </div>
-
-  </div>
-
-
-
-  <div class="container mt-5" *ngIf="addClassMode">
-
-    <div class="row">
-      <mat-form-field>
-        <mat-select placeholder="Select Grade">
-          <mat-option *ngFor="let grade of grades" name="gradeNo" [value]="grade.value" (click)="addClasses(2, grade.value)">
-            {{ grade.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-
-  </div>
-
-  <div class="container mt-5" *ngIf="addClassNameMode">
-
-    <div class="row">
-      <h5>Grade : {{addClassObj.selectGrade}}</h5>
-    </div>
-    <div class="row">
-      <mat-form-field class="full-width">
-        <input matInput formControlName="className" placeholder="Enter class name" value="">
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <button mat-button mat-raised-button (click)="addClasses(3)">Next</button>
-
-
-    </div>
-  </div>
-</form>
-
-
-<div class="container mt-5" *ngIf="addStudentsMode">
-
-  <div class="row">
-
-      <div class="col-10 text-center">
-       <b>Grade {{addClassObj.selectGrade}} </b> : <span> {{addClassObj.className}}</span>
+      <div class="row">
+         <div class="col-md-12">
+            <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+            <mat-select required>
+               <mat-option value="option">Grade One</mat-option>
+               <mat-option value="option">Grade Two</mat-option>
+               <mat-option value="option">Grade Three</mat-option>
+               <mat-option value="option">Grade Four</mat-option>
+               <mat-option value="option">Grade Five</mat-option>
+               <mat-option value="option">Grade Six</mat-option>
+               <mat-option value="option">Grade Seven</mat-option>
+               <mat-option value="option">Grade Eight</mat-option>
+               <mat-option value="option">Grade Nine</mat-option>
+               <mat-option value="option">Grade Ten</mat-option>
+               <mat-option value="option">Grade Eleven</mat-option>
+               <mat-option value="option">Grade Twelve</mat-option>
+            </mat-select>
+            <mat-placeholder>
+               <i> Select grade</i>
+            </mat-placeholder>
+            </mat-form-field>
+         </div>
       </div>
-  </div>
 
-  <div class="row mt-4">
-    <h3> Students </h3>
-  </div>
-  <div class="row mt-2">
-   <span class="link"> <mat-icon>add box</mat-icon>  Add Student</span>
-  </div>
+      <div class="row">
+         <div class="col-md-12">
+            <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+            <input matInput placeholder="Enter class name" required>
+            </mat-form-field>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+            <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel">
+            <mat-select required>
+               <mat-option value="option">Anthony</mat-option>
+               <mat-option value="option">Luckson</mat-option>
+               <mat-option value="option">Test</mat-option>
+               <mat-option value="option">John</mat-option>
+               <mat-option value="option">Sam</mat-option>
+               <mat-option value="option">Sara</mat-option>
+               <mat-option value="option">King</mat-option>
+            </mat-select>
+            <mat-placeholder>
+               <i> Select class teacher</i>
+            </mat-placeholder>
+            </mat-form-field>
+         </div>
+      </div>
 
 </div>

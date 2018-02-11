@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersService } from '../../services/teachers.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
 
 import {
   FormControl,
-  FormGroup,
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,6 +25,8 @@ export class ClassCompComponent implements OnInit {
     { value: 3, viewValue: '3' }
   ];
 
+  options: FormGroup;
+
   viewClassMode: boolean = true;
   addClassNameMode:boolean = false;
   addClassMode: boolean = false;
@@ -36,11 +39,16 @@ export class ClassCompComponent implements OnInit {
     className?:string
   } = {}
 
-  constructor(private teacherService: TeachersService, private router:Router) { 
+  constructor(private teacherService: TeachersService, private router:Router, fb: FormBuilder) { 
     this.className = new FormControl( [Validators.required]);
 
     this.addForm = new FormGroup({
         className: this.className
+    });
+
+    this.options = fb.group({
+      hideRequired: false,
+      floatLabel: 'auto',
     });
   }
 

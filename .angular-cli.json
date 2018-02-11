@@ -20,7 +20,8 @@
       "prefix": "anms",
       "styles": [
         "styles-app-loading.scss",
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/angular-calendar/css/angular-calendar.css"
 
       ],
       "stylePreprocessorOptions": {

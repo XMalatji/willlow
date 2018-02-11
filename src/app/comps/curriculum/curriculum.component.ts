@@ -38,16 +38,18 @@ grades = [
   // Enter, comma
   separatorKeysCodes = [ENTER, COMMA];
 
-  fruits = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
+  subjects = [
+    
   ];
+
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
 
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
 
   constructor(private _formBuilder: FormBuilder) { }
 
@@ -62,6 +64,9 @@ grades = [
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+    this.fourthFormGroup = this._formBuilder.group({
+      fourthCtrl: ['', Validators.required]
+    });
 
   }
 
@@ -71,7 +76,7 @@ add(event: MatChipInputEvent): void {
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.fruits.push({ name: value.trim() });
+      this.subjects.push({ name: value.trim() });
     }
 
     // Reset the input value
@@ -80,11 +85,26 @@ add(event: MatChipInputEvent): void {
     }
   }
 
- remove(fruit: any): void {
-    let index = this.fruits.indexOf(fruit);
+ remove(subject: any): void {
+    let index = this.subjects.indexOf(subject);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.subjects.splice(index, 1);
     }
   }
 }
+
+export interface Element {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: Element[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+];

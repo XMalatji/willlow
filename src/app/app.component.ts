@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
   
   sideMenuAdmin = [
     { link: 'curriculum', icon:'person pin', label: 'Manage Curriculums' },
-    { link: 'class', icon:'person pin', label: 'Manage Class' },
+    { link: 'classes', icon:'person pin', label: 'Manage Class' },
     { link: 'teachers', icon:'person pin', label: 'Manage Teachers' },
     { link: 'students', icon:'person pin', label: 'Manage Students' },
     { link: 'reports', icon:'person pin', label: 'Generate Reports' }

@@ -22,6 +22,10 @@ import { ReactiveFormsModule} from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import {   MatNativeDateModule, MatDatepickerModule } from '@angular/material';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
   imports: [
@@ -45,7 +49,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatTooltipModule,
     MatTableModule,
     MatStepperModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -71,7 +76,8 @@ import {MatChipsModule} from '@angular/material/chips';
     BigInputComponent,
     BigInputActionComponent,
     MatStepperModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ]
 })
 export class SharedModule {}
