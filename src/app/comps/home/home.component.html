@@ -1,0 +1,34 @@
+
+
+<div *ngIf="!userService.isAuthenticated">
+
+        <div class="row justify-content-center">
+                <div class="col-12 mt-5 text-center">
+                        <img [src]="logo" width="200px"/>
+                </div>
+            </div>
+
+        <app-login>
+            </app-login>
+</div>
+
+
+<div *ngIf="userService.isAuthenticated">
+                <nav mat-tab-nav-bar>
+                                <a mat-tab-link (click)="manageClasses()">Manage Classes</a>
+                                <a mat-tab-link [routerLink]="home">Manage Teachers</a>
+                                <a mat-tab-link [routerLink]="students">Manage Students</a>
+                               
+                      </nav>
+
+
+
+
+</div>
+
+<div class="container">
+
+        <div class="row">
+
+        </div>
+</div>

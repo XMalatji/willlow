@@ -1,0 +1,95 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link (click)="addClasses(1)">Add Classes</a>
+  <a mat-tab-link (click)="addStudent()">Add Students</a>
+
+</nav>
+
+
+<form name="addForm" [formGroup]="addForm">
+  <div class="container" *ngIf="viewClassMode">
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="grade">
+          <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="className">
+          <mat-header-cell *matHeaderCellDef> Class Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.className}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="classTeacher">
+          <mat-header-cell *matHeaderCellDef> Class Teacher </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.classTeacher}} </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectTeacher(row)"></mat-row>
+      </mat-table>
+    </div>
+
+  </div>
+
+
+
+  <div class="container mt-5" *ngIf="addClassMode">
+
+    <div class="row">
+      <mat-form-field>
+        <mat-select placeholder="Select Grade">
+          <mat-option *ngFor="let grade of grades" name="gradeNo" [value]="grade.value" (click)="addClasses(2, grade.value)">
+            {{ grade.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+  <div class="container mt-5" *ngIf="addClassNameMode">
+
+    <div class="row">
+      <h5>Grade : {{addClassObj.selectGrade}}</h5>
+    </div>
+    <div class="row">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="className" placeholder="Enter class name" value="">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <button mat-button mat-raised-button (click)="addClasses(3)">Next</button>
+
+
+    </div>
+  </div>
+</form>
+
+
+<div class="container mt-5" *ngIf="addStudentsMode">
+
+  <div class="row">
+
+      <div class="col-10 text-center">
+       <b>Grade {{addClassObj.selectGrade}} </b> : <span> {{addClassObj.className}}</span>
+      </div>
+  </div>
+
+  <div class="row mt-4">
+    <h3> Students </h3>
+  </div>
+  <div class="row mt-2">
+   <span class="link"> <mat-icon>add box</mat-icon>  Add Student</span>
+  </div>
+
+</div>

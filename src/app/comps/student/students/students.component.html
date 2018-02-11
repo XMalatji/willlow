@@ -1,0 +1,58 @@
+<mat-tab-group>
+    <mat-tab label="View Grades">
+        <div class="container">
+            <mat-form-field>
+                <mat-select placeholder="Choose Grade">
+                  <mat-option *ngFor="let grade of grades" [value]="grade.value">
+                    {{ grade.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+    </mat-tab>
+    <mat-tab label="Find Surname">
+       
+          <div class="container">
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="Search by surname">
+                </mat-form-field>
+          </div>
+        
+    </mat-tab>
+  </mat-tab-group>
+
+  <div class="container">
+
+      <div class="example-container mat-elevation-z8">
+          <mat-table #table [dataSource]="dataSource">
+        
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.givenName}} </mat-cell>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="surname">
+              <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.familyName}} </mat-cell>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="grade">
+              <mat-header-cell *matHeaderCellDef> Grade  </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.emailAddress}} </mat-cell>
+            </ng-container>
+        
+         
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectTeacher(row)"></mat-row>
+          </mat-table>
+        </div>
+        
+    
+  </div>

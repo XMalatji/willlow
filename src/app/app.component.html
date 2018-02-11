@@ -1,0 +1,100 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav mode="push">
+    <div class="branding"><img [src]="logo" width="50px"/> <span>Gradem</span></div>
+    <mat-nav-list *ngIf="userService.isAuthenticated">
+
+      <div *ngIf="userService.getRole() == 'Admin'">
+          <a mat-list-item *ngFor="let item of sideMenuAdmin" (click)="sidenav.close()"
+          [routerLink]="[item.link]" routerLinkActive="active">
+          <mat-icon>person pin</mat-icon>  {{item.label}}
+       </a>
+      </div>
+
+      <div class="mt-4" *ngFor="let item of navigation">
+          <a mat-list-item (click)="sidenav.close()"
+          [routerLink]="[item.link]" routerLinkActive="active">
+          <mat-icon>person pin</mat-icon>  {{item.label}}
+       </a>
+      </div>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="wrapper">
+
+    <div class="toolbar">
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.open()">
+          <mat-icon>menu</mat-icon>
+        </button>
+
+      
+        <span routerLink="" class="branding spacer d-none d-sm-inline d-md-none text-center"><img
+          [src]="logo" width="50px"/> Grades</span>
+        <span routerLink="" class="branding spacer d-none d-md-inline"><img
+          [src]="logo" width="50px"/> Grades</span>
+
+        <span class="d-none d-md-inline" *ngIf="userService.isAuthenticated">
+          <button mat-button class="nav-button" *ngFor="let item of navigation"
+              [routerLink]="[item.link]" routerLinkActive="active">
+            {{item.label}}
+          </button>
+        </span>
+
+        <!-- <button mat-button class="sign-in-button "
+                *ngIf="!userService.isAuthenticated"
+                (click)="onLoginClick()">
+          Sign in
+        </button> -->
+
+        <button *ngIf="userService.isAuthenticated"
+                mat-icon-button
+                [matMenuTriggerFor]="toolbarUserMenu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #toolbarUserMenu="matMenu">
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+
+        <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
+          <mat-icon>settings</mat-icon>
+        </button>
+
+        <a matTooltip="Project Github Repository"
+           matdTooltipPosition="before"
+           mat-icon-button class="link"
+           href="https://github.com/tomastrajan/angular-ngrx-material-starter"
+           target="_blank">
+          <i class="fa fa-github fa-2x"></i>
+        </a>
+
+      </mat-toolbar>
+    </div>
+
+    <div class="content"
+         [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+
+    <div class="footer">
+    
+      <div class="row">
+        <div class="col-12 signature">
+          &#169; {{year}} - The Dream Team
+          <br class="d-block d-sm-none">
+          <a matTooltip="Show changelog"
+             matTooltipPosition="before"
+             href="https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/CHANGELOG.md">
+            <i class="fa fa-rocket"></i> {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</mat-sidenav-container>
