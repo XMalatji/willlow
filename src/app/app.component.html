@@ -4,17 +4,12 @@
     <mat-nav-list *ngIf="userService.isAuthenticated">
 
       <div *ngIf="userService.getRole() == 'Admin'">
-          <a mat-list-item *ngFor="let item of sideMenuAdmin" (click)="sidenav.close()"
-          [routerLink]="[item.link]" routerLinkActive="active">
-          <mat-icon>person pin</mat-icon>  {{item.label}}
-       </a>
-      </div>
-
-      <div class="mt-4" *ngFor="let item of navigation">
-          <a mat-list-item (click)="sidenav.close()"
-          [routerLink]="[item.link]" routerLinkActive="active">
-          <mat-icon>person pin</mat-icon>  {{item.label}}
-       </a>
+          <div class="mt-60">
+            <a mat-list-item *ngFor="let item of sideMenuAdmin" (click)="sidenav.close()"
+            [routerLink]="[item.link]" routerLinkActive="active">
+            <mat-icon>{{item.icon}}</mat-icon>  {{item.label}}
+            </a>
+          </div>
       </div>
 
     </mat-nav-list>

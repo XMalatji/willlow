@@ -29,6 +29,9 @@ import { CalendarModule } from 'angular-calendar';
 import { AddstudentComponent } from './comps/student/addstudent/addstudent.component';
 import { SubnavComponent } from './comps/subnav/subnav.component';
 import { StudentsComponent } from './comps/student/students/students.component';
+import { CurriculumComponent } from './comps/curriculum/curriculum.component';
+import {FormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -53,7 +56,7 @@ import { StudentsComponent } from './comps/student/students/students.component';
   declarations: [
     AppComponent, HeaderComponent, FooterComponent,
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
-      TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, AddstudentComponent, SubnavComponent, StudentsComponent
+      TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, AddstudentComponent, SubnavComponent, StudentsComponent, CurriculumComponent
     ],
   providers: [  UserService, TeachersService],
   bootstrap: [AppComponent]

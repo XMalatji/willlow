@@ -8,6 +8,7 @@ import { TeachersViewComponent } from '@app/comps/teachers-view/teachers-view.co
 import { ClassCompComponent } from '@app/comps/class-comp/class-comp.component';
 import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
 import { StudentsComponent } from '@app/comps/student/students/students.component';
+import { CurriculumComponent } from '@app/comps/curriculum/curriculum.component';  
 
 const routes: Routes = [
   {
@@ -61,6 +62,13 @@ const routes: Routes = [
   {
     path: 'teachersView',
     component:TeachersViewComponent,
+    data: {
+      title: 'Teachers'
+    }
+  },
+  {
+    path: 'curriculum',
+    component:CurriculumComponent,
     data: {
       title: 'Teachers'
     }

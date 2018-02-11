@@ -9,7 +9,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
@@ -20,8 +19,10 @@ import {MatTableModule} from '@angular/material/table';
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { ReactiveFormsModule} from '@angular/forms';
-import {   MatNativeDateModule,
-  MatDatepickerModule } from '@angular/material';
+import {MatStepperModule} from '@angular/material/stepper';
+import {   MatNativeDateModule, MatDatepickerModule } from '@angular/material';
+import {MatChipsModule} from '@angular/material/chips';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -35,7 +36,6 @@ import {   MatNativeDateModule,
     MatTabsModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatChipsModule,
     MatCardModule,
     MatSidenavModule,
     MatCheckboxModule,
@@ -43,7 +43,9 @@ import {   MatNativeDateModule,
     MatMenuModule,
     MatIconModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule,
+    MatChipsModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -53,7 +55,6 @@ import {   MatNativeDateModule,
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
-    MatChipsModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
@@ -68,7 +69,9 @@ import {   MatNativeDateModule,
     MatNativeDateModule,
     MatDatepickerModule,
     BigInputComponent,
-    BigInputActionComponent
+    BigInputActionComponent,
+    MatStepperModule,
+    MatChipsModule
   ]
 })
 export class SharedModule {}
