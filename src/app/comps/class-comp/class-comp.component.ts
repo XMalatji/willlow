@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersService } from '../../services/teachers.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatTableDataSource} from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 
 import {
@@ -15,15 +17,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./class-comp.component.scss']
 })
 export class ClassCompComponent implements OnInit {
-  displayedColumns = ['grade', 'className', 'classTeacher'];
-  dataSource: {};
-  selectGrade:number=0;
+
+  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  selection = new SelectionModel<Element>(true, []);
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  // displayedColumns = ['grade', 'className', 'classTeacher'];
+  // dataSource: {};
+  // selectGrade:number=0;
   
-  grades = [
-    { value: 1, viewValue: '1' },
-    { value: 2, viewValue: '2' },
-    { value: 3, viewValue: '3' }
-  ];
+  // grades = [
+  //   { value: 1, viewValue: '1' },
+  //   { value: 2, viewValue: '2' },
+  //   { value: 3, viewValue: '3' }
+  // ];
 
   options: FormGroup;
 
@@ -60,7 +81,7 @@ export class ClassCompComponent implements OnInit {
       }
     );
 
-    this.dataSource = [{ "grade": "1", "className": "1A", "classTeacher": "Ms Coetzee" }];
+    // this.dataSource = [{ "grade": "1", "className": "1A", "classTeacher": "Ms Coetzee" }];
   }
 
   addStudent(){
@@ -94,3 +115,18 @@ export class ClassCompComponent implements OnInit {
 
 
 }
+
+export interface Element {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: Element[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+];

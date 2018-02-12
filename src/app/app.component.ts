@@ -45,11 +45,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
   
   sideMenuAdmin = [
-    { link: 'curriculum', icon:'person pin', label: 'Manage Curriculums' },
-    { link: 'classes', icon:'person pin', label: 'Manage Class' },
-    { link: 'teachers', icon:'person pin', label: 'Manage Teachers' },
-    { link: 'students', icon:'person pin', label: 'Manage Students' },
-    { link: 'reports', icon:'person pin', label: 'Generate Reports' }
+    { link: 'curriculum', icon:'card_travel', label: '  Manage Curriculums' },
+    { link: 'classes', icon:'class', label: '  Manage Class' },
+    { link: 'teachers', icon:'face', label: '  Manage Teachers' },
+    { link: 'students', icon:'accessibility', label: '  Manage Students' },
+    { link: 'reports', icon:'person pin', label: '  Generate Reports' }
   ];
 
   constructor(
