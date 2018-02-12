@@ -9,6 +9,7 @@ import { ClassCompComponent } from '@app/comps/class-comp/class-comp.component';
 import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
 import { StudentsComponent } from '@app/comps/student/students/students.component';
 import { CurriculumComponent } from '@app/comps/curriculum/curriculum.component';  
+import { ProfileComponent } from '@app/comps/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,13 @@ const routes: Routes = [
     component: AddstudentComponent,
     data: {
       title: 'Students'
+    }
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: {
+      title: 'Profile'
     }
   },
   {
