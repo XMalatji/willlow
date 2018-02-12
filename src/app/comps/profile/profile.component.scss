@@ -1,0 +1,27 @@
+
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+    line-height: $size;
+  }
+
+
+  .profile-pic-div{
+    border:1px solid #999;
+  }
+
+      mat-icon.profile-pic {
+        @include md-icon-size(280px);
+       
+      }
+    
+  
+      .full-width{
+          width:100%;
+      }
+
+      .half-width{
+        width:40%;
+    }

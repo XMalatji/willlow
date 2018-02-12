@@ -112,11 +112,14 @@ export class AppComponent implements OnInit, OnDestroy {
     
   }
 
+  profile(){
+    this.router.navigate(['profile']);
+  }
   onLogoutClick() {
     this.store.dispatch(new ActionAuthLogout());
   }
 
   logout(){
-    this.userService.logout();
+    this.userService.isAuthenticated=false;
   }
 }

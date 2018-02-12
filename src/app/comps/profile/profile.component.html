@@ -1,0 +1,67 @@
+<form>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Profile</h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4 icon-form-field">
+     <div class="profile-pic-div">
+        <mat-icon color="accent" class="profile-pic">color_lens</mat-icon>
+     </div>
+     <input type="file" name="pic" accept="image/*">
+    </div>
+      <div class="col-md-5 icon-form-field">
+          <mat-form-field class="full-width">
+              <input matInput placeholder="Name" value="Phaseka">
+            </mat-form-field> <br />
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Surname" value="Malatji">
+              </mat-form-field> <br />
+              <mat-form-field class="full-width">
+                  <input matInput placeholder="School ID" value="10247743">
+                </mat-form-field> <br />
+                
+    </div>
+  </div>
+
+  <div class="row mt-5">
+      <div class="col-sm-12">
+          <h1>Password</h1>
+        </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+    
+      <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Current password" value="10247743">
+        </mat-form-field> <br />
+    </div>
+    <div class="col-md-8">
+    
+        <mat-form-field class="half-width">
+            <input matInput type="password" placeholder="New password">
+          </mat-form-field>
+          <mat-form-field class="half-width">
+              <input matInput type="password" placeholder="Confirm password">
+            </mat-form-field> <br />
+          <button mat-raised-button (click)="onClick">Change password</button>
+            <br />
+      </div>
+  </div>
+
+  <div class="row mt-5">
+      <div class="col-sm-12">
+          <h1>Address</h1>
+        </div>
+
+  </div>
+
+</div>
+</form>
