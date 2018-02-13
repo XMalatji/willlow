@@ -15,10 +15,10 @@ import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 
 
-const ELEMENT_DATA: IPerson[] = [
-  { id:11, name: 'Hydrogen', surname: "Malatji" },
+// const ELEMENT_DATA: IPerson[] = [
+//   { id:11, name: 'Hydrogen', surname: "Malatji" },
 
-];
+// ];
 
 
 @Component({
@@ -90,7 +90,7 @@ export class TeachersViewComponent implements OnInit {
       this.teacherService.getTeachers().subscribe(
         data => {
           console.log(data)
-          this.dataSource=data;
+          // this.dataSource=data;
         }
       );
       console.log(this.dataSource)
