@@ -88,7 +88,7 @@ export class UserService implements OnInit {
     //   err => {
     //     console.log("service Error occured");
     //   });
-    this._http.post('api/login/v1', body, httpOptions).subscribe(
+    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions).subscribe(
       d => {
         if (d) {
           this.isAuthenticated=true;
@@ -99,7 +99,7 @@ export class UserService implements OnInit {
       err => {
 
       })
-    return this._http.post('api/login/v1', body, httpOptions);
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 
 
