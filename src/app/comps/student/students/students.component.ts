@@ -7,13 +7,28 @@ import { TeachersService } from '@app/services/teachers.service';
   styleUrls: ['./students.component.scss']
 })
 export class StudentsComponent implements OnInit {
+
   displayedColumns = ['name', 'surname', 'grade'];
   dataSource:{};
 
   grades = [
-    { value: 1, viewValue: '1' },
-    { value: 2, viewValue: '2' },
-    { value: 3, viewValue: '3' }
+    { value: 1, viewValue: 'One' },
+    { value: 2, viewValue: 'Two' },
+    { value: 3, viewValue: 'Three' }
+    { value: 1, viewValue: 'Four' },
+    { value: 2, viewValue: 'Five' },
+    { value: 3, viewValue: 'Six' }
+    { value: 1, viewValue: 'Seven' },
+    { value: 2, viewValue: 'Eight' },
+    { value: 3, viewValue: 'Nine' }
+    { value: 1, viewValue: 'Ten' },
+    { value: 2, viewValue: 'Eleven' },
+    { value: 3, viewValue: 'Twelve' }
+  ];
+
+  genders = [
+    { value: 1, viewValue: 'Male' },
+    { value: 2, viewValue: 'Female' }
   ];
 
   constructor(private teacherService:TeachersService) { }

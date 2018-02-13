@@ -1,36 +1,25 @@
-
-
-
 <form name="addTeacherForm" [formGroup]="addTeacherForm" (ngSubmit)="addTeacher()" novalidate>
-  <div class="container">
-    <div class="row mt-4">
-        <div class="col-4">
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Name" value="" formControlName="givenName">
-              </mat-form-field> <br />
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="Surname" value="" formControlName="familyName">
-                </mat-form-field> <br />
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Email" value="" formControlName="emailAddress">
-                  </mat-form-field> <br />
-                  <mat-form-field class="full-width">
-                      <input matInput placeholder="Cellphone" value="" formControlName="cellphone">
-                    </mat-form-field> <br />
-                  
-                  <button mat-button mat-raised-button>Add</button>
-
-
-
-          </div>
-          <div class="col-3 col-sm-8 profile-pic">
-            Profile Pic
-            <input type="file" name="pic" accept="image/*">
-          </div>
-        </div>
-       
-    </div>
-
- 
-
+<div class="container">
+   <div class="row mt-4">
+      <div class="col-4">
+         <mat-form-field class="full-width">
+            <input matInput placeholder="Name" value="" formControlName="givenName">
+         </mat-form-field>
+         <br />
+         <mat-form-field class="full-width">
+            <input matInput placeholder="Surname" value="" formControlName="familyName">
+         </mat-form-field>
+         <br />
+         <mat-form-field class="full-width">
+            <input matInput placeholder="Email" value="" formControlName="emailAddress">
+         </mat-form-field>
+         <br />
+         <mat-form-field class="full-width">
+            <input matInput placeholder="Cellphone" value="" formControlName="cellphone">
+         </mat-form-field>
+         <br />
+         <button mat-button mat-raised-button>Add Teacher</button>
+      </div>
+   </div>
+</div>
 </form>

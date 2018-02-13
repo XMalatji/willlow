@@ -14,6 +14,7 @@ mat-sidenav-container {
     flex-direction: column;
     position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
 
     .toolbar {
       position: fixed;
@@ -147,5 +148,6 @@ mat-sidenav {
 .mt-60 {
   margin-top: 60px;
 }
+
 
 

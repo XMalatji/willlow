@@ -36,7 +36,7 @@
         </button>
         <mat-menu #toolbarUserMenu="matMenu">
           <button mat-menu-item (click)="profile()">
-            <mat-icon>power_settings_new</mat-icon>
+            <mat-icon>fingerprint</mat-icon>
             <span>Profile</span>
           </button>
           <button mat-menu-item (click)="logout()">
@@ -57,13 +57,8 @@
     
       <div class="row">
         <div class="col-12 signature">
-          &#169; {{year}} - The Dream Team
+          &#169; {{year}} - Stainaz
           <br class="d-block d-sm-none">
-          <a matTooltip="Show changelog"
-             matTooltipPosition="before"
-             href="https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/CHANGELOG.md">
-            <i class="fa fa-rocket"></i> {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
-          </a>
         </div>
       </div>
     </div>

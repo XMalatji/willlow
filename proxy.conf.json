@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://192.168.8.163:8080/willow-schools",
+    "target": "http://kariliner.decicated.co.za:8080/willow-schools",
     "secure": false
   }
 }
