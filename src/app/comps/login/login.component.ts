@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   logForm: FormGroup;
   uEmail: FormControl;
   uPassword: FormControl;
-
+  logo = require('./../../../assets/willow-logo.png');
   constructor(
     private store: Store<any>,
     public userService: UserService,
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
      //console.log(data);
 
      if(data){
-       success=true;
-       window.localStorage.jwt = data["token"];
-       console.log('logged in')
+     
+       window.localStorage.jwt = data["jwt"];
+       console.log('logged in');
        this.toast.success('Logged in');
        this._router.navigate(['/home']);
      }

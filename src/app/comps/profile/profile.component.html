@@ -1,4 +1,4 @@
-<form>
+<form name="profileForm" [formGroup]="profileForm" novalidate>
 
 
 <div class="container">
@@ -46,12 +46,14 @@
     <div class="col-md-8">
     
         <mat-form-field class="half-width">
-            <input matInput type="password" placeholder="New password">
+            <input matInput type="password" placeholder="New password" formControlName="uPassword1">
           </mat-form-field>
           <mat-form-field class="half-width">
-              <input matInput type="password" placeholder="Confirm password">
+              <input matInput type="password" placeholder="Confirm password" formControlName="uPassword2">
             </mat-form-field> <br />
-          <button mat-raised-button (click)="onClick">Change password</button>
+
+            <span *ngIf="changedPwd"><h3> Your password has been reset. </h3>  </span>
+          <button mat-raised-button (click)="changePwd()">Change password</button>
             <br />
       </div>
   </div>

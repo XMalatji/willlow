@@ -11,6 +11,8 @@ import { StudentsComponent } from '@app/comps/student/students/students.componen
 import { CurriculumComponent } from '@app/comps/curriculum/curriculum.component';  
 import { ProfileComponent } from '@app/comps/profile/profile.component';
 import { ForgotpasswordComponent } from '@app/comps/forgotpassword/forgotpassword.component';
+import { AuthguardGuard } from './shared/authguard.guard';
+import { LoginComponent } from '@app/comps/login/login.component';
 
 
 const routes: Routes = [
@@ -36,6 +38,7 @@ const routes: Routes = [
   {
     path: 'addstudent',
     component: AddstudentComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Students'
     }
@@ -43,6 +46,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Profile'
     }
@@ -52,6 +56,13 @@ const routes: Routes = [
     component: StudentsComponent,
     data: {
       title: 'Students'
+    }
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login'
     }
   },
   {

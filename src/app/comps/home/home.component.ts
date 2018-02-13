@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  logo = require('./../../../assets/willow-logo.png');
+
   isAuthenticated:boolean = false;
 
   // students = [ { "name":"Phaseka"}, {"name":"John"}]
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
      }
 
   ngOnInit() {
+    console.log(this.userService.theUser)
     this.isAuthenticated=this.userService.loggedIn();
       // this.getStudents();
       // this.students$ = this.store.select(state => state.students)
