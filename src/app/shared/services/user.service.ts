@@ -20,7 +20,12 @@ const httpOptions = {
 @Injectable()
 export class UserService implements OnInit {
   theUser : {};
-  isAuthenticated:boolean=false;
+  name:string;
+  surname:string;
+  tempUser = { 
+    email:"luckson.karikoga@gmail.com"
+  };
+  isAuthenticated:boolean=true;
   userToken: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -51,8 +56,9 @@ export class UserService implements OnInit {
       return null;
     }
     else {
-      return window.localStorage.jwt
-
+  
+      console.log('here')
+      return window.localStorage.jwt;
 
     }
   }
@@ -60,13 +66,58 @@ export class UserService implements OnInit {
   getRole(){
    return "Admin";
   }
+  getName(){
+    return this.name;
+  }
+  forgotPwd(email:string){
+    console.log('oister')
+  }
   getUsers() {
     return this._http.get('/api/users');
   }
   loggedIn() {
-    // return tokenNotExpired("jwt");
-  
-    return this.isAuthenticated;
+    if (window.localStorage.jwt === undefined) {
+      return false;
+    }
+    else{
+      return true;
+    }
+    
+  }
+  changePwd(pwd1:string, pwd2:string){
+    let body = {
+      username:this.getUser(),
+      oldPassword: pwd1,
+      newPassword: pwd2
+    };
+
+    let rbody = JSON.stringify(body);
+    //console.log('servin' + body.email)
+    // console.log('we loggin in' + body.email);
+    // return this._http.post('http://localhost:8000/api/users/login', { email: username, password: password })
+    //     .subscribe(
+    //   res => {
+    //     console.log(res);
+    //   },
+    //   err => {
+    //     console.log("service Error occured");
+    //   });
+    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions).subscribe(
+      d => {
+        if (d) {
+          this.isAuthenticated=true;
+          
+          this.theUser=d;
+        }
+      },
+
+      err => {
+
+      })
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
+
+
+
   }
   login(username: string, password: string) {
 
@@ -92,6 +143,7 @@ export class UserService implements OnInit {
       d => {
         if (d) {
           this.isAuthenticated=true;
+          
           this.theUser=d;
         }
       },
@@ -121,25 +173,14 @@ export class UserService implements OnInit {
   }
 
   getUser() {
-    // //console.log(window.localStorage.jwt)
-    // var token = localStorage.getItem('jwt');
-    // var uId = this.jwtHelper.decodeToken(token);
-    // var uuId = uId.userId;
+    let user = this.tempUser.email;
+    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', user, httpOptions).subscribe(
+      data =>{
+        this.name
+      }
+    )
 
-    // let userUrl: string = '/api/users/' + uuId;
-    // console.log(userUrl)
-    // //let token = window.localStorage.jwt;
-    // return this._http.get(userUrl)
-    //   .map((resp: Response) => {
-    //     return resp;
-    //   })
-    //   .catch(this.handleError);
-    if(this.theUser){
-    return this.theUser;
-    }
-    else{
-      return "not logged inß"
-    }
+    return 
   }
   logout() {
     this.isAuthenticated=false;

@@ -1,18 +1,20 @@
-<form name="addTeacherForm" [formGroup]="addTeacherForm" (ngSubmit)="addTeacher()" novalidate>
+<form name="addTeacherForm" [formGroup]="addStudentForm" (ngSubmit)="addTeacher()" novalidate>
 <div class="container">
    <div class="row mt-4">
-      <div class="col-4">
+      <div class="col-8">
          <mat-form-field class="full-width">
-            <input matInput placeholder="Student name" value="">
+            <input matInput placeholder="Student name" formControlName="sName">
          </mat-form-field>
          <br />
          <mat-form-field class="full-width">
-            <input matInput placeholder="Surname" value="">
+            <input matInput placeholder="Surname" formControlName="sSurname">
          </mat-form-field>
          <br />
-         <mat-form-field class="full-width">
-            <input matInput placeholder="Date of birth" value="">
-         </mat-form-field>
+         <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
          <br />
          <mat-form-field class="full-width">
             <input matInput placeholder="Student ID" value="">

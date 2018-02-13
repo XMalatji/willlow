@@ -34,7 +34,10 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarComponent } from './comps/calendar/calendar.component';
 import { ProfileComponent } from './comps/profile/profile.component';
 import { ForgotpasswordComponent } from './comps/forgotpassword/forgotpassword.component';
+import { AuthguardGuard } from './shared/authguard.guard';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DataInterceptor } from './shared/data.interceptor';
 
 @NgModule({
   imports: [
@@ -61,7 +64,13 @@ import { ForgotpasswordComponent } from './comps/forgotpassword/forgotpassword.c
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, AddstudentComponent, SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent
     ],
-  providers: [  UserService, TeachersService],
+  providers: [  AuthguardGuard, UserService, TeachersService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DataInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

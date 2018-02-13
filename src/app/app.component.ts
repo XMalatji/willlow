@@ -120,6 +120,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   logout(){
-    this.userService.isAuthenticated=false;
+    window.localStorage.clear();
   }
 }
