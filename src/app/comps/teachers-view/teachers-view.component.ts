@@ -74,6 +74,13 @@ export class TeachersViewComponent implements OnInit {
     {value: '9', viewValue: '4C'},
   ];
 
+  subjects = [
+    {value: '0', viewValue: 'Mathematics'},
+    {value: '1', viewValue: 'Physican Science'},
+    {value: '2', viewValue: 'Biology'},
+    {value: '3', viewValue: 'English'},
+  ];
+
   selectedTeacher:IPerson;
   @ViewChild('modalDiv') modalDiv: ElementRef;
   @ViewChild(AModalComponent) modComp: AModalComponent;
