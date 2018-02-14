@@ -15,8 +15,7 @@ import { FooterComponent } from './comps/footer/footer.component';
 import { HomeComponent } from './comps/home/home.component';
 import { LoginComponent } from './comps/login/login.component';
 import { UserService } from './shared/services/user.service';
-import { ToastrService } from 'ngx-toastr';
-import { ToastrModule } from 'ngx-toastr';
+
 import { SidebarComponent } from './comps/sidebar/sidebar.component';
 import { TeacherComponent } from './comps/teacher/teacher.component';
 import { TeachersService } from './services/teachers.service';
@@ -35,7 +34,7 @@ import { CalendarComponent } from './comps/calendar/calendar.component';
 import { ProfileComponent } from './comps/profile/profile.component';
 import { ForgotpasswordComponent } from './comps/forgotpassword/forgotpassword.component';
 import { AuthguardGuard } from './shared/authguard.guard';
-
+import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './shared/data.interceptor';
 import { LookupDataService } from './lookup-data.service';
@@ -45,7 +44,7 @@ import { LookupDataService } from './lookup-data.service';
     // angular
     BrowserAnimationsModule,
     BrowserModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(), 
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     CalendarModule.forRoot(),

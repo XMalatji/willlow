@@ -1,4 +1,7 @@
-<form name="addTeacherForm" [formGroup]="addStudentForm" (ngSubmit)="addTeacher()" novalidate>
+
+
+
+<form name="addTeacherForm" *ngIf="addStudentMode" [formGroup]="addStudentForm" (ngSubmit)="addTeacher()" novalidate>
 <div class="container">
    <div class="row mt-4">
       <div class="col-8">

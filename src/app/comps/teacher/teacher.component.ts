@@ -15,7 +15,7 @@ export class TeacherComponent implements OnInit ,AfterViewInit{
 
 
   counter:ITeacher;
-  teachersSource:ITeacher;
+  teachersSource:ITeacher[];
   addTeacherForm: FormGroup;
   emailAddress: FormControl;
   cellphone: FormControl;
@@ -45,11 +45,11 @@ export class TeacherComponent implements OnInit ,AfterViewInit{
 
     this.teacherService.getTeachers().subscribe(
       data => {
-        console.log('here -' +JSON.stringify(data));
-
+      //  console.log('here -' +JSON.stringify(data));
+//console.log('ooo'+data)
         this.teachersSource = data;
-        this.counter=this.teachersSource;
-        console.log('sauce'+JSON.stringify(this.teachersSource));
+      //  this.counter=this.teachersSource;
+       // console.log('sauce'+JSON.stringify(this.teachersSource));
       }
     );
 

@@ -19,10 +19,10 @@ const httpOptions = {
 
 @Injectable()
 export class UserService implements OnInit {
-  theUser : {};
-  name:string;
-  surname:string;
-  isAuthenticated:boolean=true;
+  theUser: {};
+  name: string;
+  surname: string;
+  isAuthenticated: boolean = true;
   userToken: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
@@ -53,23 +53,29 @@ export class UserService implements OnInit {
       return null;
     }
     else {
-  
+
 
       return window.localStorage.jwt;
 
     }
   }
 
-  getRole(){
-   return "Admin";
+  getRole() {
+    return "Admin";
   }
 
-  getName(){
-    let name:string="user";
-
+  getName() {
+    let name: string = window.localStorage.user;
+    let role=window.localStorage.role;
+   if(role=="ADMINISTRATOR"){
+     console.log('oi')
+   }
+   else{
+     console.log('oiste')
+   }
     return name;
   }
-  forgotPwd(email:string){
+  forgotPwd(email: string) {
     console.log('oister')
   }
   getUsers() {
@@ -79,15 +85,15 @@ export class UserService implements OnInit {
     if (window.localStorage.jwt === undefined) {
       return false;
     }
-    else{
-     
+    else {
+      console.log(window.localStorage.jwt)
       return true;
     }
-    
+
   }
-  changePwd(pwd1:string, pwd2:string){
+  changePwd(pwd1: string, pwd2: string) {
     let body = {
-      username:this.getUser(),
+      username: this.getUser(),
       oldPassword: pwd1,
       newPassword: pwd2
     };
@@ -103,7 +109,7 @@ export class UserService implements OnInit {
     //   err => {
     //     console.log("service Error occured");
     //   });
- 
+
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 
@@ -129,7 +135,7 @@ export class UserService implements OnInit {
     //   err => {
     //     console.log("service Error occured");
     //   });
- 
+
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 
@@ -152,12 +158,12 @@ export class UserService implements OnInit {
   }
 
   getUser() {
-  
-  
+
+
 
   }
   logout() {
-    this.isAuthenticated=false;
+    this.isAuthenticated = false;
     window.localStorage.clear();
   }
 

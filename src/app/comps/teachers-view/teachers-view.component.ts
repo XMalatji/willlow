@@ -116,7 +116,7 @@ export class TeachersViewComponent implements OnInit {
       .takeWhile(() => !this.groupTeachers)
       .subscribe(x => {
           this.groupTeachers=x;
-          console.log('x'+JSON.stringify(this.groupTeachers))
+          //console.log('x'+JSON.stringify(this.groupTeachers))
       });
   
     //  console.log('x'+JSON.stringify(this.groupTeachers))
@@ -131,7 +131,7 @@ export class TeachersViewComponent implements OnInit {
   selectTeacher(row) {
    this.selectedTeacher=row;
 
-  // console.log(this.selectedTeacher)
+  console.log(this.selectedTeacher)
     this.modComp.openModal();
     
   }
