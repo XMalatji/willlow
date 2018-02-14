@@ -54,7 +54,7 @@ export class UserService implements OnInit {
     }
     else {
   
-      console.log('here')
+
       return window.localStorage.jwt;
 
     }
@@ -63,11 +63,11 @@ export class UserService implements OnInit {
   getRole(){
    return "Admin";
   }
+
   getName(){
     let name:string;
 
-
-    return this.theUser;
+    
   }
   forgotPwd(email:string){
     console.log('oister')
@@ -129,18 +129,7 @@ export class UserService implements OnInit {
     //   err => {
     //     console.log("service Error occured");
     //   });
-    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions).subscribe(
-      d => {
-        if (d) {
-          this.isAuthenticated=true;
-          
-          this.theUser=d;
-        }
-      },
-
-      err => {
-
-      })
+ 
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 

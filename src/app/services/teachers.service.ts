@@ -42,7 +42,7 @@ export class TeachersService implements OnInit {
 
   createCredentials(body:{}){
     console.log(body)
-    return this._http.post('api/credentials', body, httpOptions);
+    return this._http.post('http://kariliner.decicated.co.za:8080/willow-schools/api/credentials', body, httpOptions);
   }
   addTeacher(body : {}) {
 
@@ -61,7 +61,7 @@ export class TeachersService implements OnInit {
     //     console.log("service Error occured");
     //   });
   
-    return this._http.post('api/person', body, httpOptions);
+    return this._http.post('http://kariliner.decicated.co.za:8080/willow-schools/api/person', body, httpOptions);
 
 
 
@@ -70,7 +70,7 @@ export class TeachersService implements OnInit {
 
   sendEmail(body : {}){
     console.log(body)
-    return this._http.post('api/email', body, httpOptions);
+    return this._http.post('http://kariliner.decicated.co.za:8080/willow-schools/api/email', body, httpOptions);
 
   }
 

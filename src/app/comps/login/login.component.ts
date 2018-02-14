@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
      if(data){
      
        window.localStorage.jwt = data["jwt"];
-       window.localStorage.user = data["principal"];
+       window.localStorage.user = data["principal"].name;
        window.localStorage.role = data["roles"];
        console.log('logged in');
        this.toast.success('Logged in');

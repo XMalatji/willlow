@@ -15,6 +15,7 @@ export class TeacherComponent implements OnInit {
   givenName: FormControl;
   familyName: FormControl;
   retTeacher:IPerson;
+  addTeacherMode:boolean=false;
   constructor(private teacherService:TeachersService) { 
 
     this.emailAddress = new FormControl("", [Validators.required]);
@@ -32,6 +33,10 @@ export class TeacherComponent implements OnInit {
   ngOnInit() {
   }
 
+  addTeacherOpen(){
+    console.log('oi')
+    this.addTeacherMode=true;
+  }
   addTeacher(){
     this.teacherService.addTeacher(this.addTeacherForm.value).subscribe( 
       data => {
@@ -41,7 +46,7 @@ export class TeacherComponent implements OnInit {
           let credBody = {
               "partyId":this.retTeacher.id,
               "username":this.emailAddress.value,
-              "password":"willow1234"
+              "password":"willow@1234"
           }
           this.teacherService.createCredentials(credBody).subscribe(
               credData => {
@@ -49,11 +54,11 @@ export class TeacherComponent implements OnInit {
                   console.log('successfully created password');
                   let credBody = {
                     
-                    "recipient" :"xmalatji@gmail.com",
+                    "recipient" :this.emailAddress.value,
 	                  "subject"	: "Willow International School Demo",
                     "message"	: "You have been added to the Grading system. Please find herein ,your password <b> Willow1234</b>",
                     
-	              "fromAddress"	: "luckson@kariliner.co.za"
+	              "fromAddress"	: "willow@kariliner.co.za"
                 }
                 this.teacherService.sendEmail(credBody).subscribe(
                   d => {
@@ -69,6 +74,12 @@ export class TeacherComponent implements OnInit {
 
 
         }
+        else{
+          console.log('no result')
+        }
+      },
+      err => {
+        console.log(err)
       }
     );
   }
