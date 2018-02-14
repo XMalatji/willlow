@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '@app/shared/services/user.service';
 import { Router } from '@angular/router';
+import {LookupDataService} from '../../lookup-data.service';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
     private store: Store<any>,
     public userService: UserService,
     private toast: ToastrService,
-    private _router:Router
+    private _router:Router,
+    public lookupDataService: LookupDataService
   ) { 
     this.uEmail = new FormControl("", [Validators.required]);
     this.uPassword = new FormControl("", [Validators.required]);
@@ -59,6 +62,8 @@ export class LoginComponent implements OnInit {
        console.log('logged in');
        this.toast.success('Logged in');
        this._router.navigate(['/home']);
+       console.log("@@@ we are here because login successful !!!");
+       this.lookupDataService.getLookupData();
      }
      else{
        console.log('err')

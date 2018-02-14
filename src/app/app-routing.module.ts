@@ -6,7 +6,7 @@ import { HomeComponent } from './comps/home/home.component';
 import { TeacherComponent } from '@app/comps/teacher/teacher.component';
 import { TeachersViewComponent } from '@app/comps/teachers-view/teachers-view.component';
 import { ClassCompComponent } from '@app/comps/class-comp/class-comp.component';
-import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
+//import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
 import { StudentsComponent } from '@app/comps/student/students/students.component';
 import { CurriculumComponent } from '@app/comps/curriculum/curriculum.component';  
 import { ProfileComponent } from '@app/comps/profile/profile.component';
@@ -35,14 +35,14 @@ const routes: Routes = [
       title: 'Home'
     }
   },
-  {
+ /* {
     path: 'addstudent',
     component: AddstudentComponent,
     canActivate: [AuthguardGuard],
     data: {
       title: 'Students'
     }
-  },
+  },*/
   {
     path: 'profile',
     component: ProfileComponent,
