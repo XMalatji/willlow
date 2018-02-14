@@ -22,7 +22,7 @@ const httpOptions = {
 
 @Injectable()
 export class TeachersService implements OnInit {
-
+asd:string="lol";
   teacher = {};
 
   // usersRef: string = 'http://localhost:8000/api/users';

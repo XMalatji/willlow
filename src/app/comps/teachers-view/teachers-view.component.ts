@@ -1,10 +1,11 @@
 import {
-  Component, OnInit,
+  Component, OnInit, 
   ViewChild,
   ElementRef,
   EventEmitter,
-  Output,
-  ViewEncapsulation
+  Output,Input,
+  ViewEncapsulation,
+  SimpleChanges
 } from '@angular/core';
 import { AModalComponent } from '@app/shared/a-modal/a-modal.component';
 import { IPerson, ITeacher } from '../../tyyypes/tyyypes';
@@ -13,6 +14,8 @@ import { Observable } from 'rxjs/Observable';
 import { TeachersService } from '@app/services/teachers.service';
 import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
+import {  } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -28,6 +31,23 @@ export class TeachersViewComponent implements OnInit {
   dataSource=[
     {"givenName":"Phaseka"}
   ];
+  private _data = new BehaviorSubject<ITeacher[]>([]);
+  groupTeachers:ITeacher[];
+
+
+  @Input() teachersSource: string='first';
+
+
+  @Input()
+    set ts(value) {
+        // set the latest value for _data BehaviorSubject
+        this._data.next(value);
+    };
+
+    get ts() {
+        // get the latest value from _data BehaviorSubject
+        return this._data.getValue();
+    }
 
   /** Whether the number of selected elements matches the total number of rows. */
   // isAllSelected() {
@@ -87,26 +107,27 @@ export class TeachersViewComponent implements OnInit {
   // displayedColumns = ['name', 'surname', 'email', 'cell'];
   // dataSource:{};
 
-  teachersSource:{};
-
   constructor(private teacherService:TeachersService) { }
 
   ngOnInit() {
-      this.teacherService.getTeachers().subscribe(
-        data => {
-            console.log("Our data" + JSON.stringify(data));
-           this.teachersSource=data;
-
-         
-        }
-
-        
-      );
-
-    
    
+
+      this._data
+      .takeWhile(() => !this.groupTeachers)
+      .subscribe(x => {
+          this.groupTeachers=x;
+          console.log('x'+JSON.stringify(this.groupTeachers))
+      });
   
+    //  console.log('x'+JSON.stringify(this.groupTeachers))
   }
+  
+//   ngOnChanges(changes: SimpleChanges) {
+//     // only run when property "data" changed
+//     if (changes['ts']) {
+//         this.groupTeachers.push(this.ts);
+//     }
+// }
   selectTeacher(row) {
    this.selectedTeacher=row;
 

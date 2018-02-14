@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Rx';
 export class TeacherComponent implements OnInit ,AfterViewInit{
 
 
-  
+  counter:ITeacher;
   teachersSource:ITeacher;
   addTeacherForm: FormGroup;
   emailAddress: FormControl;
@@ -38,7 +38,7 @@ export class TeacherComponent implements OnInit ,AfterViewInit{
     });
   }
   ngAfterViewInit() {
-    console.log('lol')
+  
   }
 
   ngOnInit() {
@@ -48,6 +48,7 @@ export class TeacherComponent implements OnInit ,AfterViewInit{
         console.log('here -' +JSON.stringify(data));
 
         this.teachersSource = data;
+        this.counter=this.teachersSource;
         console.log('sauce'+JSON.stringify(this.teachersSource));
       }
     );
