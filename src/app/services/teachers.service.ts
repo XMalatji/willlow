@@ -23,7 +23,7 @@ const httpOptions = {
 @Injectable()
 export class TeachersService implements OnInit {
 
-
+  teacher = {};
 
   // usersRef: string = 'http://localhost:8000/api/users';
   // const httpOptions :{} = {
@@ -77,12 +77,29 @@ export class TeachersService implements OnInit {
 
 
   
-  getTeachers():Observable<ITeacher>{
+  /*getTeachers():Observable<ITeacher>{
     return this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com')
     .map((resp: ITeacher) => {
      
       return resp;
     })
+  }*/
+
+  getTeachers(){
+  // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
+    //return this.teacher;
+    
+     this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com', httpOptions).subscribe(
+      d => {
+        console.log("***************** teachers ")
+        console.log(JSON.stringify(d));
+        this.teacher = d;
+        console.log("#######################");
+        console.log(this.teacher);
+      },
+      err => {
+
+      });
   }
 
 

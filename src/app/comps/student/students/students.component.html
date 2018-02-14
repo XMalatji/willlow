@@ -2,6 +2,13 @@
 <div class="container">
    <div class="row mt-4">
       <div class="col-8">
+        <mat-form-field class="full-width">
+           <mat-select placeholder="Academic Year to enroll">
+             <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
+               {{ academicYear.viewValue }}
+             </mat-option>
+           </mat-select>
+         </mat-form-field>
          <mat-form-field class="full-width">
             <input matInput placeholder="Student name" formControlName="sName">
          </mat-form-field>

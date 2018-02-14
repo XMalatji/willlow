@@ -18,6 +18,10 @@ import { Router } from '@angular/router';
 })
 export class ClassCompComponent implements OnInit {
 
+ academicYears = [
+    {value: '2018', viewValue: '2018'}
+  ];
+   
   displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
   selection = new SelectionModel<Element>(true, []);

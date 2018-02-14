@@ -87,12 +87,12 @@ export class TeachersViewComponent implements OnInit {
   // displayedColumns = ['name', 'surname', 'email', 'cell'];
   // dataSource:{};
 
-teachersSource:ITeacher;
+  teachersSource:ITeacher;
 
   constructor(private teacherService:TeachersService) { }
 
   ngOnInit() {
-      this.teacherService.getTeachers().subscribe(
+      /*this.teacherService.getTeachers().subscribe(
         data => {
             console.log(JSON.stringify(data))
         
@@ -101,8 +101,13 @@ teachersSource:ITeacher;
 
      
         }
-      );
-        console.log('oi'+this.teachersSource)
+      );*/
+      let human = {};
+
+      human = this.teacherService.getTeachers();
+     // console.log('oi'+this.teachersSource)
+     console.log("@@@@@ teachers ...")
+     console.log(JSON.stringify(human));
   
   }
   selectTeacher(row) {

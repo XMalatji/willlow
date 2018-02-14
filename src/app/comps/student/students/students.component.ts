@@ -13,6 +13,10 @@ export class StudentsComponent implements OnInit {
   displayedColumns = ['name', 'surname', 'grade'];
   dataSource:{};
 
+  academicYears = [
+    {value: '2018', viewValue: '2018'}
+  ];
+
   grades = [
     { value: 1, viewValue: 'One' },
     { value: 2, viewValue: 'Two' },
