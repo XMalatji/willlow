@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TeachersService } from '../../services/teachers.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -11,17 +11,18 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: './teacher.component.html',
   styleUrls: ['./teacher.component.scss']
 })
-export class TeacherComponent implements OnInit {
+export class TeacherComponent implements OnInit ,AfterViewInit{
 
 
   
+  teachersSource:ITeacher;
   addTeacherForm: FormGroup;
   emailAddress: FormControl;
   cellphone: FormControl;
   givenName: FormControl;
   familyName: FormControl;
   retTeacher:IPerson;
-  teachers$:Observable<any[]>;
+  teachers$:Observable<ITeacher[]>;
   addTeacherMode:boolean=false;
   constructor(private teacherService:TeachersService) { 
 
@@ -36,6 +37,9 @@ export class TeacherComponent implements OnInit {
       familyName:this.familyName
     });
   }
+  ngAfterViewInit() {
+    console.log('lol')
+  }
 
   ngOnInit() {
 
@@ -43,9 +47,8 @@ export class TeacherComponent implements OnInit {
       data => {
         console.log('here -' +JSON.stringify(data));
 
-        this.teachers$=data;
-
-        
+        this.teachersSource = data;
+        console.log('sauce'+JSON.stringify(this.teachersSource));
       }
     );
 
@@ -55,6 +58,10 @@ export class TeacherComponent implements OnInit {
   addTeacherOpen(){
     console.log('oi')
     this.addTeacherMode=true;
+  }
+
+  getAllTeachers(){
+  
   }
   closeMenu(){
     this.addTeacherMode=false;
