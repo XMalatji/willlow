@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   changedPwd:boolean=false;
-  profile: FormGroup;
+  profileForm: FormGroup;
   uPassword1: FormControl;
   uPassword2: FormControl;
   constructor(private userService:UserService) { 
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     this.uPassword1 = new FormControl("", [Validators.required]);
     this.uPassword2 = new FormControl("", [Validators.required]);
 
-    this.profile = new FormGroup({
+    this.profileForm = new FormGroup({
       uPassword1: this.uPassword1,
       uPassword2: this.uPassword2
     });

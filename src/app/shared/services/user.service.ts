@@ -22,9 +22,6 @@ export class UserService implements OnInit {
   theUser : {};
   name:string;
   surname:string;
-  tempUser = { 
-    email:"luckson.karikoga@gmail.com"
-  };
   isAuthenticated:boolean=true;
   userToken: string;
   jwtHelper: JwtHelper = new JwtHelper();
@@ -67,7 +64,10 @@ export class UserService implements OnInit {
    return "Admin";
   }
   getName(){
-    return this.name;
+    let name:string;
+
+
+    return this.theUser;
   }
   forgotPwd(email:string){
     console.log('oister')
@@ -80,6 +80,7 @@ export class UserService implements OnInit {
       return false;
     }
     else{
+     
       return true;
     }
     
@@ -102,18 +103,7 @@ export class UserService implements OnInit {
     //   err => {
     //     console.log("service Error occured");
     //   });
-    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions).subscribe(
-      d => {
-        if (d) {
-          this.isAuthenticated=true;
-          
-          this.theUser=d;
-        }
-      },
-
-      err => {
-
-      })
+ 
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 
@@ -173,14 +163,9 @@ export class UserService implements OnInit {
   }
 
   getUser() {
-    let user = this.tempUser.email;
-    this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', user, httpOptions).subscribe(
-      data =>{
-        this.name
-      }
-    )
+  
+  
 
-    return 
   }
   logout() {
     this.isAuthenticated=false;

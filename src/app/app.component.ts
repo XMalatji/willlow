@@ -61,6 +61,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+
+
     this.store
       .select(selectorSettings)
       .pipe(takeUntil(this.unsubscribe$))
