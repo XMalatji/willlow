@@ -4,6 +4,8 @@ import { TeachersService } from '../../services/teachers.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { IPerson } from '../../tyyypes/tyyypes';
 import { AModalComponent } from '@app/shared/a-modal/a-modal.component';
+import { ITeacher } from '@app/tyyypes/tyyypes';
+import { Observable } from 'rxjs/Rx';
 @Component({
   selector: 'anms-teacher',
   templateUrl: './teacher.component.html',
@@ -19,6 +21,7 @@ export class TeacherComponent implements OnInit {
   givenName: FormControl;
   familyName: FormControl;
   retTeacher:IPerson;
+  teachers$:Observable<any[]>;
   addTeacherMode:boolean=false;
   constructor(private teacherService:TeachersService) { 
 
@@ -35,6 +38,18 @@ export class TeacherComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.teacherService.getTeachers().subscribe(
+      data => {
+        console.log('here -' +JSON.stringify(data));
+
+        this.teachers$=data;
+
+        
+      }
+    );
+
+
   }
 
   addTeacherOpen(){

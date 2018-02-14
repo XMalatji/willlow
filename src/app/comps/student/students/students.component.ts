@@ -42,11 +42,11 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
     this.teacherService.getTeachers().subscribe(
       data => {
-        console.log(data)
+        console.log('#####teachers ' + data)
         this.dataSource=data;
       }
     );
-    console.log(this.dataSource)
+    console.log(this.dataSource);
+  
   }
-
 }

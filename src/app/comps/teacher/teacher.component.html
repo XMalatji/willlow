@@ -36,5 +36,9 @@
 
 
     <div class="mt-5">
-            <app-teachers-view></app-teachers-view>
+
+        <div *ngFor="let item of teachers | async">
+
+            {{item.givenName}}
+            <!-- <app-teachers-view></app-teachers-view> -->
     </div>
