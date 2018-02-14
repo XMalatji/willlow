@@ -65,9 +65,9 @@ export class UserService implements OnInit {
   }
 
   getName(){
-    let name:string;
+    let name:string="user";
 
-    
+    return name;
   }
   forgotPwd(email:string){
     console.log('oister')

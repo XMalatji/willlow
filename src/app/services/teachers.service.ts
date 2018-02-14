@@ -13,6 +13,7 @@ import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import { User } from '@app/tyyypes/user';
 import { ITeacher } from '@app/tyyypes/tyyypes';
+import { IPerson } from '../tyyypes/tyyypes';
 
 
 const httpOptions = {
@@ -61,7 +62,7 @@ export class TeachersService implements OnInit {
     //     console.log("service Error occured");
     //   });
   
-    return this._http.post('http://kariliner.decicated.co.za:8080/willow-schools/api/person', body, httpOptions);
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher', body, httpOptions);
 
 
 
@@ -76,12 +77,14 @@ export class TeachersService implements OnInit {
 
 
   
-  getTeachers(){
-    return this._http.get('api/person/teachers')
-    .map((resp: Response) => {
+  getTeachers():Observable<ITeacher>{
+    return this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com')
+    .map((resp: ITeacher) => {
+     
       return resp;
     })
   }
+
 
 
     handleError(error: any){

@@ -15,10 +15,6 @@ import {MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 
 
-// const ELEMENT_DATA: IPerson[] = [
-//   { id:11, name: 'Hydrogen', surname: "Malatji" },
-
-// ];
 
 
 @Component({
@@ -28,23 +24,24 @@ import {SelectionModel} from '@angular/cdk/collections';
 })
 export class TeachersViewComponent implements OnInit {
 
-  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
-  selection = new SelectionModel<Element>(true, []);
+  displayedColumns = ['name', 'surname', 'email','cell'];
+  dataSource=[
+    {"givenName":"Phaseka"}
+  ];
 
   /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
+  // isAllSelected() {
+  //   const numSelected = this.selection.selected.length;
+  //   const numRows = this.dataSource.data.length;
+  //   return numSelected === numRows;
+  // }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
-  }
+  // masterToggle() {
+  //   this.isAllSelected() ?
+  //       this.selection.clear() :
+  //       this.dataSource.data.forEach(row => this.selection.select(row));
+  // }
 
   grades = [
     {value: '0', viewValue: 'Grade One'},
@@ -90,17 +87,23 @@ export class TeachersViewComponent implements OnInit {
   // displayedColumns = ['name', 'surname', 'email', 'cell'];
   // dataSource:{};
 
+teachersSource:ITeacher;
 
   constructor(private teacherService:TeachersService) { }
 
   ngOnInit() {
       this.teacherService.getTeachers().subscribe(
         data => {
-          console.log(data)
-          // this.dataSource=data;
+            console.log(JSON.stringify(data))
+        
+         this.teachersSource.givenName=data.givenName;
+         this.teachersSource.familyName=data.familyName;
+
+     
         }
       );
-      console.log(this.dataSource)
+        console.log('oi'+this.teachersSource)
+  
   }
   selectTeacher(row) {
    this.selectedTeacher=row;
@@ -123,13 +126,3 @@ export interface Element {
   weight: number;
   symbol: string;
 }
-
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-];

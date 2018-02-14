@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TeachersService } from '../../services/teachers.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { IPerson } from '../../tyyypes/tyyypes';
+import { AModalComponent } from '@app/shared/a-modal/a-modal.component';
 @Component({
   selector: 'anms-teacher',
   templateUrl: './teacher.component.html',
   styleUrls: ['./teacher.component.scss']
 })
 export class TeacherComponent implements OnInit {
+
+
+  
   addTeacherForm: FormGroup;
   emailAddress: FormControl;
   cellphone: FormControl;
@@ -37,40 +41,45 @@ export class TeacherComponent implements OnInit {
     console.log('oi')
     this.addTeacherMode=true;
   }
+  closeMenu(){
+    this.addTeacherMode=false;
+  }
   addTeacher(){
+ 
     this.teacherService.addTeacher(this.addTeacherForm.value).subscribe( 
       data => {
         if(data){
-          console.log('successfully added teacher')
+          console.log('successfully added teacher');
+         this.addTeacherMode=false;
           this.retTeacher=data;
           let credBody = {
               "partyId":this.retTeacher.id,
               "username":this.emailAddress.value,
               "password":"willow@1234"
           }
-          this.teacherService.createCredentials(credBody).subscribe(
-              credData => {
-                if(credData){
-                  console.log('successfully created password');
-                  let credBody = {
+          // this.teacherService.createCredentials(credBody).subscribe(
+          //     credData => {
+          //       if(credData){
+          //         console.log('successfully created password');
+          //         let credBody = {
                     
-                    "recipient" :this.emailAddress.value,
-	                  "subject"	: "Willow International School Demo",
-                    "message"	: "You have been added to the Grading system. Please find herein ,your password <b> Willow1234</b>",
+          //           "recipient" :this.emailAddress.value,
+	        //           "subject"	: "Willow International School Demo",
+          //           "message"	: "You have been added to the Grading system. Please find herein ,your password <b> Willow1234</b>",
                     
-	              "fromAddress"	: "willow@kariliner.co.za"
-                }
-                this.teacherService.sendEmail(credBody).subscribe(
-                  d => {
-                    console.log('email sent')
-                  }
-                );
+	        //       "fromAddress"	: "willow@kariliner.co.za"
+          //       }
+          //       this.teacherService.sendEmail(credBody).subscribe(
+          //         d => {
+          //           console.log('email sent')
+          //         }
+          //       );
 
 
 
-                }
-              }
-          )
+          //       }
+          //     }
+          // )
 
 
         }

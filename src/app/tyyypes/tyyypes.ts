@@ -2,7 +2,7 @@
   
   export interface IPerson {
     id?:number
-    name?: string;
+    givenName?: string;
     surname?: string;
     emailAdress?: string;
     cell?: string;
@@ -10,11 +10,9 @@
   }
 
 
-  export interface ITeacher{
-    
-      
-          id: number,
-          
-          givenName:string,
+  export class ITeacher{
+
+    givenName:string;
+    familyName:string; 
         
   }

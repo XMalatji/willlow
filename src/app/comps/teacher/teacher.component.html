@@ -27,8 +27,14 @@
             <input matInput placeholder="Cellphone" value="" formControlName="cellphone">
          </mat-form-field>
          <br />
-         <button mat-button mat-raised-button>Add Teacher</button>
+         <button mat-button mat-raised-button>Add Teacher</button><br /><br />
+         <span class="blue-link" (click)="closeMenu()">Close</span>
       </div>
    </div>
 </div>
 </form>
+
+
+    <div class="mt-5">
+            <app-teachers-view></app-teachers-view>
+    </div>
