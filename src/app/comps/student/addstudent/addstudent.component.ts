@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -49,4 +49,4 @@ export class AddstudentComponent implements OnInit {
     console.log(this.addStudentForm.value);
   }  
 
-}
+}*/

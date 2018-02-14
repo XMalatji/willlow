@@ -25,7 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AModalComponent } from '@app/shared/a-modal/a-modal.component';
 import { ClassCompComponent } from './comps/class-comp/class-comp.component';
 import { CalendarModule } from 'angular-calendar';
-import { AddstudentComponent } from './comps/student/addstudent/addstudent.component';
+//import { AddstudentComponent } from './comps/student/addstudent/addstudent.component';
 import { SubnavComponent } from './comps/subnav/subnav.component';
 import { StudentsComponent } from './comps/student/students/students.component';
 import { CurriculumComponent } from './comps/curriculum/curriculum.component';
@@ -38,6 +38,7 @@ import { AuthguardGuard } from './shared/authguard.guard';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './shared/data.interceptor';
+import { LookupDataService } from './lookup-data.service';
 
 @NgModule({
   imports: [
@@ -62,9 +63,11 @@ import { DataInterceptor } from './shared/data.interceptor';
   declarations: [
     AppComponent, HeaderComponent, FooterComponent,
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
-      TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, AddstudentComponent, SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent
+      TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
+      //AddstudentComponent,
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent
     ],
-  providers: [  AuthguardGuard, UserService, TeachersService,
+  providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DataInterceptor,
