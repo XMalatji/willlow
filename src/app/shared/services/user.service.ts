@@ -155,7 +155,7 @@ export class UserService implements OnInit {
     let rbody = JSON.stringify(body);
 
   
-    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher', body, httpOptions);
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/student', body, httpOptions);
 
   }
 
