@@ -98,7 +98,8 @@ serializedDate:FormControl;
       data => {
         if(data){
           console.log('successfully added student');
-      
+          this.toastr.success(`PSuccessfully added studen`);
+          
          }
         else{
           console.log('no result')
