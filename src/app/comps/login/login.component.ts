@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
        window.localStorage.jwt = data["jwt"];
        window.localStorage.user = data["principal"].name;
        window.localStorage.role = data["roles"];
-       console.log('logged in');
+       console.log('logged in'+JSON.stringify(data));
       //  this.toast.success('Logged in');
        this._router.navigate(['/home']);
        console.log("@@@ we are here because login successful !!!");

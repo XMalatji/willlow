@@ -84,7 +84,13 @@ asd:string="lol";
       return resp;
     })
   }*/
-
+  getTeacher(user:string):Observable<ITeacher>{
+    // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
+      //return this.teacher;
+      
+       return this._http.get<ITeacher>('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email='+user, httpOptions);
+    }
+  
   getTeachers():Observable<ITeacher[]>{
   // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
     //return this.teacher;

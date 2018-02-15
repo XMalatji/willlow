@@ -9,21 +9,21 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-3 icon-form-field">
-     <div class="profile-pic-div">
+    <div class="col-md-4 icon-form-field text-center">
+     <div class="profile-pic-div justify-content-center">
         <mat-icon color="accent" class="profile-pic">person pin</mat-icon>
      </div>
      <input type="file" name="pic" accept="image/*">
     </div>
       <div class="col-md-5 icon-form-field">
           <mat-form-field class="full-width">
-              <input matInput placeholder="Name" value="Phaseka">
+              <input matInput placeholder="Name" value="{{person?.givenName}}">
             </mat-form-field> <br />
             <mat-form-field class="full-width">
-                <input matInput placeholder="Surname" value="Malatji">
+                <input matInput placeholder="Surname" value="{{person?.familyName}}">
               </mat-form-field> <br />
               <mat-form-field class="full-width">
-                  <input matInput placeholder="School ID" value="10247743">
+                  <input matInput placeholder="School ID" value="{{person?.id}}">
                 </mat-form-field> <br />
                 
     </div>
@@ -40,7 +40,7 @@
     <div class="col-md-4">
     
       <mat-form-field class="full-width">
-          <input matInput type="password" placeholder="Current password" value="10247743">
+          <input matInput type="password" placeholder="Current password" value="12345678">
         </mat-form-field> <br />
     </div>
     <div class="col-md-8">

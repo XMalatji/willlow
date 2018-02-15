@@ -13,7 +13,8 @@
   }
 
       mat-icon.profile-pic {
-        @include md-icon-size(280px);
+        text-align: center;
+        @include md-icon-size(200px);
        
       }
     

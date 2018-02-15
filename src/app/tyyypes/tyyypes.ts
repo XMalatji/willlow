@@ -1,18 +1,18 @@
 
   
   export interface IPerson {
-    id?:number
+  
     givenName?: string;
-    surname?: string;
+    familyName?: string;
     emailAdress?: string;
-    cell?: string;
-    assignedClasses?:string[]
+    cellphone?: string;
+    dateOfBirth?:string;
+    id?:number;
   }
 
 
-  export class ITeacher{
+  export interface ITeacher extends IPerson{
 
-    givenName:string;
-    familyName:string; 
+ 
         
   }

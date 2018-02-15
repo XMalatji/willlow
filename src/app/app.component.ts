@@ -52,6 +52,13 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'reports', icon:'person pin', label: '  Generate Reports' }
   ];
 
+  sideMenuTeacher = [
+    { link: 'classes', icon:'card_travel', label: 'Grade Class' },
+    { link: 'classes', icon:'class', label: '  Reports' },
+    { link: 'teachers', icon:'face', label: '  Create Event' },
+    { link: 'students', icon:'accessibility', label: '  Manage Students' }
+  ];
+
   constructor(
     public overlayContainer: OverlayContainer,
     private store: Store<any>,

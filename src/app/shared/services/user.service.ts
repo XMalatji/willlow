@@ -61,14 +61,22 @@ export class UserService implements OnInit {
   }
 
   getRole() {
-    return "Admin";
+    return window.localStorage.role;
   }
+  getAdminProfile(){
 
+  }
+  getTeacherProfile(){
+
+  }
   getName() {
     let name: string = window.localStorage.user;
     let role=window.localStorage.role;
    if(role=="ADMINISTRATOR"){
-     console.log('oi')
+     
+   }
+   else if(role=="TEACHER"){
+
    }
    else{
      console.log('oiste')
@@ -86,7 +94,7 @@ export class UserService implements OnInit {
       return false;
     }
     else {
-      console.log(window.localStorage.jwt)
+     // console.log(window.localStorage.jwt)
       return true;
     }
 
@@ -140,6 +148,14 @@ export class UserService implements OnInit {
 
 
 
+
+  }
+  addStudent(body : {}) {
+
+    let rbody = JSON.stringify(body);
+
+  
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher', body, httpOptions);
 
   }
 

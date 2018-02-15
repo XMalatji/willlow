@@ -1,57 +1,12 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link (click)="addStudentOpen()"> 
+        Add Student
+     </a>
 
 
+</nav>
 
-<form name="addTeacherForm" *ngIf="addStudentMode" [formGroup]="addStudentForm" (ngSubmit)="addTeacher()" novalidate>
-<div class="container">
-   <div class="row mt-4">
-      <div class="col-8">
-        <mat-form-field class="full-width">
-           <mat-select placeholder="Academic Year to enroll">
-             <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
-               {{ academicYear.viewValue }}
-             </mat-option>
-           </mat-select>
-         </mat-form-field>
-         <mat-form-field class="full-width">
-            <input matInput placeholder="Student name" formControlName="sName">
-         </mat-form-field>
-         <br />
-         <mat-form-field class="full-width">
-            <input matInput placeholder="Surname" formControlName="sSurname">
-         </mat-form-field>
-         <br />
-         <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-         <br />
-         <mat-form-field class="full-width">
-            <input matInput placeholder="Student ID" value="">
-         </mat-form-field>
-         <br />
-         <mat-form-field class="full-width">
-            <input matInput placeholder="Cellphone number" value="">
-         </mat-form-field>
-         <br/>
-         <mat-form-field class="full-width">
-           <mat-select placeholder="Student grade">
-             <mat-option *ngFor="let grade of grades" [value]="grade.value">
-               {{ grade.viewValue }}
-             </mat-option>
-           </mat-select>
-         </mat-form-field>
-         <br />
-         <mat-form-field class="full-width">
-           <mat-select placeholder="Student gender">
-             <mat-option *ngFor="let gender of genders" [value]="gender.value">
-               {{ gender.viewValue }}
-             </mat-option>
-           </mat-select>
-         </mat-form-field>
-         <br />
-         <button mat-button mat-raised-button>Add Student</button>
-      </div>
-   </div>
+
+<div *ngIf="addStudentMode">
+    <app-addstudent></app-addstudent>
 </div>
-</form>

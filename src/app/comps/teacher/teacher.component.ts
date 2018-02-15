@@ -68,44 +68,28 @@ export class TeacherComponent implements OnInit ,AfterViewInit{
     this.addTeacherMode=false;
   }
   addTeacher(){
+
+    let body = {};
+
+    body =this.addTeacherForm.value;
+    body['partyRoles'] = [	
+      {
+
+        "partyRoleType" : "SUBJECT_TEACHER"
+      }
+    ]	;
+
+
+    console.log(body);
+  
  
-    this.teacherService.addTeacher(this.addTeacherForm.value).subscribe( 
+    this.teacherService.addTeacher(body).subscribe( 
       data => {
         if(data){
           console.log('successfully added teacher');
          this.addTeacherMode=false;
           this.retTeacher=data;
-          let credBody = {
-              "partyId":this.retTeacher.id,
-              "username":this.emailAddress.value,
-              "password":"willow@1234"
-          }
-          // this.teacherService.createCredentials(credBody).subscribe(
-          //     credData => {
-          //       if(credData){
-          //         console.log('successfully created password');
-          //         let credBody = {
-                    
-          //           "recipient" :this.emailAddress.value,
-	        //           "subject"	: "Willow International School Demo",
-          //           "message"	: "You have been added to the Grading system. Please find herein ,your password <b> Willow1234</b>",
-                    
-	        //       "fromAddress"	: "willow@kariliner.co.za"
-          //       }
-          //       this.teacherService.sendEmail(credBody).subscribe(
-          //         d => {
-          //           console.log('email sent')
-          //         }
-          //       );
-
-
-
-          //       }
-          //     }
-          // )
-
-
-        }
+         }
         else{
           console.log('no result')
         }
