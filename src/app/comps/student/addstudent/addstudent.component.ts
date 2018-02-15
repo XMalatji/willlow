@@ -17,7 +17,7 @@ export class AddstudentComponent implements OnInit {
   cellphone: FormControl;
   givenName: FormControl;
   familyName: FormControl;
-  schoolId: FormControl;
+  studentId: FormControl;
   grade: FormControl;
   cellNo: FormControl;
   schoolGrade: FormControl;
@@ -63,7 +63,7 @@ serializedDate:FormControl;
     this.schoolGrade = new FormControl("", [Validators.required]);
     this.gender = new FormControl("", [Validators.required]);
     this.schoolGrade = new FormControl("", [Validators.required]);
-    this.schoolId = new FormControl("", [Validators.required]);
+    this.studentId = new FormControl("", [Validators.required]);
 
     this.addStudentForm = new FormGroup({
       emailAddress: this.emailAddress,
@@ -72,7 +72,7 @@ serializedDate:FormControl;
       cellphone:this.cellNo,
       schoolGrade:this.schoolGrade,
       dateOfBirth: this.dateOfBirth,
-      schoolId:this.schoolId,
+      studentId:this.studentId,
       gender:this.gender
     });
    }
