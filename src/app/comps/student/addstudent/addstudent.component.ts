@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '@app/shared/services/user.service';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-addstudent',
@@ -81,15 +83,17 @@ serializedDate:FormControl;
   
   addStudent(){
     let body = {};
-
+    let newDate = moment(this.dateOfBirth.value).format('YYYY-MM-DD');
+ 
     body =this.addStudentForm.value;
+    body["dateOfBirth"] = newDate;
     body['partyRoles'] = [	
       {
 
         "partyRoleType" : "STUDENT"
       }
     ]	;
-
+    console.log('body'+JSON.stringify(body));
     this.userService.addStudent(body).subscribe( 
       data => {
         if(data){

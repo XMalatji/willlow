@@ -38,12 +38,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './shared/data.interceptor';
 import { LookupDataService } from './lookup-data.service';
+import {MomentModule} from 'angular2-moment/moment.module';
+
+
 
 @NgModule({
   imports: [
     // angular
     BrowserAnimationsModule,
     BrowserModule,
+    MomentModule,
     ToastrModule.forRoot(), 
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
