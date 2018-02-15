@@ -48,8 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { link: 'curriculum', icon:'card_travel', label: '  Manage Curriculums' },
     { link: 'classes', icon:'class', label: '  Manage Class' },
     { link: 'teachers', icon:'face', label: '  Manage Teachers' },
-    { link: 'students', icon:'accessibility', label: '  Manage Students' },
-    { link: 'reports', icon:'person pin', label: '  Generate Reports' }
+    { link: 'students', icon:'accessibility', label: '  Manage Students' }
   ];
 
   sideMenuTeacher = [
