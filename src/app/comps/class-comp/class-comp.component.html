@@ -18,7 +18,7 @@
          <div class="col-md-12">
             <mat-form-field>
             <mat-select required formControlName="schoolGrade">
-                <mat-option *ngFor="let grade of grades" [value]="grade.value" (click)="showGrade()">
+                <mat-option *ngFor="let grade of grades" [value]="grade.value" (click)="showGrade(grade.value)">
                     {{ grade.viewValue }}
                   </mat-option>
             </mat-select>
@@ -57,8 +57,8 @@
              <div class="docs-example-viewer-title-spacer custom-table-heading">Select Students</div>
          </div>
          <br/>
-         <div class="example-container mat-elevation-z8">
-            <mat-table #table [dataSource]="">
+         <div class="example-container mat-elevation-z8" *ngIf="students">
+            <mat-table #table [dataSource]="students">
 
                 <!-- Checkbox Column -->
                 <ng-container matColumnDef="select">
@@ -76,28 +76,22 @@
                   </mat-cell>
                 </ng-container>
    
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                  <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-                </ng-container>
-   
                 <!-- Name Column -->
-                <ng-container matColumnDef="name">
+                <ng-container matColumnDef="givenName">
                   <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                  <mat-cell *matCellDef="let element"> {{element.givenName}} </mat-cell>
                 </ng-container>
    
                 <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                <ng-container matColumnDef="familyName">
+                  <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.familyName}} </mat-cell>
                 </ng-container>
    
                 <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                <ng-container matColumnDef="dateOfBirth">
+                  <mat-header-cell *matHeaderCellDef> DOB </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </mat-cell>
                 </ng-container>
    
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

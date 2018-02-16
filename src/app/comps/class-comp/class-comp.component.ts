@@ -41,7 +41,7 @@ export class ClassCompComponent implements OnInit {
     {value: '2018', viewValue: '2018'}
   ];
    
-  displayedColumns = ['select', 'position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['givenName', 'familyName', 'dateOfBirth'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
   selection = new SelectionModel<Element>(true, []);
 students:IStudent[];
@@ -92,14 +92,18 @@ students:IStudent[];
       }
     );
 
-    this.userService.getStudents().subscribe(
-      data => {
-        //console.log(data)
-        this.students=data;
-      }
-    );
+   
 
     // this.dataSource = [{ "grade": "1", "className": "1A", "classTeacher": "Ms Coetzee" }];
+  }
+  showGrade(grade:number){
+console.log(grade);
+this.userService.getStudents().subscribe(
+  data => {
+    //console.log(data)
+    this.students=data;
+  }
+);
   }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
