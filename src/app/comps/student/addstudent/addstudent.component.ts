@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '@app/shared/services/user.service';
 import * as moment from 'moment';
-
+import { grades } from './../../../tyyypes/tyyypes';
 
 @Component({
   selector: 'app-addstudent',
@@ -29,20 +29,7 @@ serializedDate:FormControl;
     {value: '2019', viewValue: '2019'}
   ];
 
-  grades = [
-    { value: 'GRADE_ONE', viewValue: '1' },
-    { value: 'GRADE_TWO', viewValue: '2' },
-    { value: 'GRADE_THREE', viewValue: '3' },
-    { value: 'GRADE_FOUR', viewValue: '4' },
-    { value: 'GRADE_FIVE', viewValue: '5' },
-    { value: 'GRADE_SIX', viewValue: '6' },
-    { value: 'GRADE_SEVEN', viewValue: '7' },
-    { value: 'GRADE_EIGHT', viewValue: '8' },
-    { value: 'GRADE_NINE', viewValue: '9' },
-    { value: 'GRADE_TEN', viewValue: '10' },
-    { value: 'GRADE_ELEVEN', viewValue: '11' },
-    { value: 'GRADE_TWELVE', viewValue: '12' }
-  ];
+
 
   genders = [
     { value: 'MALE', viewValue: 'Male' },

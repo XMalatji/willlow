@@ -193,7 +193,7 @@ export class UserService implements OnInit {
 
 
 
-    getTeachers():Observable<IStudent[]>{
+    getStudents():Observable<IStudent[]>{
       // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
         //return this.teacher;
         

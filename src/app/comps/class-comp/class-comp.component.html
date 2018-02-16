@@ -1,11 +1,13 @@
-<div class="container">
+<form name="addClassForm" [formGroup]="addClassForm" (ngSubmit)="addStudent()" novalidate>
+  
+<div class="container mt-3">
    <div class="example-container">
 
       <div class="row">
         <div class="col-md-12">
             <mat-form-field class="full-width">
-              <mat-select placeholder="Enrollment Year">
-                <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
+              <mat-select placeholder="Enrollment Year"  formControlName="enrollmentYear" *ngFor="let academicYear of academicYears">
+                <mat-option [value]="academicYear.value">
                   {{ academicYear.viewValue }}
                 </mat-option>
               </mat-select>
@@ -14,22 +16,11 @@
       </div>
       <div class="row">
          <div class="col-md-12">
-            <mat-form-field
-            [hideRequiredMarker]="options.value.hideRequired"
-            [floatLabel]="options.value.floatLabel">
-            <mat-select required>
-               <mat-option value="option">Grade One</mat-option>
-               <mat-option value="option">Grade Two</mat-option>
-               <mat-option value="option">Grade Three</mat-option>
-               <mat-option value="option">Grade Four</mat-option>
-               <mat-option value="option">Grade Five</mat-option>
-               <mat-option value="option">Grade Six</mat-option>
-               <mat-option value="option">Grade Seven</mat-option>
-               <mat-option value="option">Grade Eight</mat-option>
-               <mat-option value="option">Grade Nine</mat-option>
-               <mat-option value="option">Grade Ten</mat-option>
-               <mat-option value="option">Grade Eleven</mat-option>
-               <mat-option value="option">Grade Twelve</mat-option>
+            <mat-form-field>
+            <mat-select required formControlName="schoolGrade">
+                <mat-option *ngFor="let grade of grades" [value]="grade.value" (click)="showGrade()">
+                    {{ grade.viewValue }}
+                  </mat-option>
             </mat-select>
             <mat-placeholder>
                <i> Select grade</i>
@@ -40,27 +31,20 @@
 
       <div class="row">
          <div class="col-md-12">
-            <mat-form-field
-            [hideRequiredMarker]="options.value.hideRequired"
-            [floatLabel]="options.value.floatLabel">
-            <input matInput placeholder="Enter class name" required>
+            <mat-form-field>
+            <input formControlName="name" matInput placeholder="Enter class name" required>
             </mat-form-field>
          </div>
       </div>
-
+    
       <div class="row">
          <div class="col-md-12">
-            <mat-form-field
-            [hideRequiredMarker]="options.value.hideRequired"
-            [floatLabel]="options.value.floatLabel">
-            <mat-select required>
-               <mat-option value="option">Anthony</mat-option>
-               <mat-option value="option">Luckson</mat-option>
-               <mat-option value="option">Test</mat-option>
-               <mat-option value="option">John</mat-option>
-               <mat-option value="option">Sam</mat-option>
-               <mat-option value="option">Sara</mat-option>
-               <mat-option value="option">King</mat-option>
+            <mat-form-field>
+            <mat-select formControlName="classTeacher" required>
+              <div *ngFor="let teacher of Teachers">
+                  <mat-option value="option">{{teacher.givenName}}</mat-option>
+              </div>
+              
             </mat-select>
             <mat-placeholder>
                <i> Select class teacher</i>
@@ -74,53 +58,55 @@
          </div>
          <br/>
          <div class="example-container mat-elevation-z8">
-           <mat-table #table [dataSource]="dataSource">
+            <mat-table #table [dataSource]="">
 
-             <!-- Checkbox Column -->
-             <ng-container matColumnDef="select">
-               <mat-header-cell *matHeaderCellDef>
-                 <mat-checkbox (change)="$event ? masterToggle() : null"
-                               [checked]="selection.hasValue() && isAllSelected()"
-                               [indeterminate]="selection.hasValue() && !isAllSelected()">
-                 </mat-checkbox>
-               </mat-header-cell>
-               <mat-cell *matCellDef="let row">
-                 <mat-checkbox (click)="$event.stopPropagation()"
-                               (change)="$event ? selection.toggle(row) : null"
-                               [checked]="selection.isSelected(row)">
-                 </mat-checkbox>
-               </mat-cell>
-             </ng-container>
-
-             <!-- Position Column -->
-             <ng-container matColumnDef="position">
-               <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-             </ng-container>
-
-             <!-- Name Column -->
-             <ng-container matColumnDef="name">
-               <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-             </ng-container>
-
-             <!-- Weight Column -->
-             <ng-container matColumnDef="weight">
-               <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-             </ng-container>
-
-             <!-- Symbol Column -->
-             <ng-container matColumnDef="symbol">
-               <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-               <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-             </ng-container>
-
-             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-             <mat-row *matRowDef="let row; columns: displayedColumns;"
-                      (click)="selection.toggle(row)">
-             </mat-row>
-           </mat-table>
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                  <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? selection.toggle(row) : null"
+                                  [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                  </mat-cell>
+                </ng-container>
+   
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                </ng-container>
+   
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+   
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                  <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                </ng-container>
+   
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                  <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                </ng-container>
+   
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"
+                         (click)="selection.toggle(row)">
+                </mat-row>
+              </mat-table>
+   
+   
          </div>
          <br/>
          <div class="row">
@@ -130,3 +116,5 @@
          </div>
 
 </div>
+</div>
+</form>
