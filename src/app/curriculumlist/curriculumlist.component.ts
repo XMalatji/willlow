@@ -26,7 +26,7 @@ export class CurriculumlistComponent implements OnInit {
 
     this.classService.getCambridgeCurriculum().subscribe(
       data => {
-        console.log('cambridge ###' + JSON.stringify(data));
+      //  console.log('cambridge ###' + JSON.stringify(data));
         this.cambridgeSource = data;
       },
       err => {
@@ -38,7 +38,7 @@ export class CurriculumlistComponent implements OnInit {
 
     this.classService.getNationalCurriculum().subscribe(
       data => {
-        console.log('cambridge ###' + JSON.stringify(data));
+       // console.log('cambridge ###' + JSON.stringify(data));
         this.nationalSource = data;
       },
       err => {

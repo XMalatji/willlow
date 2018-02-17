@@ -96,7 +96,7 @@
         <span routerLink="" class="branding spacer d-none d-md-inline"><img
           [src]="logo" width="50px"/></span>
 
-        <button *ngIf="userService.isAuthenticated"
+        <button *ngIf="userService.loggedIn()"
                 mat-icon-button
                 [matMenuTriggerFor]="toolbarUserMenu">
           <mat-icon>person</mat-icon>

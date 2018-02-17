@@ -69,13 +69,11 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(err) {
-    console.log(err)
+    console.log(err);
   }
 
   onLoginClick() {
     this.store.dispatch(new ActionAuthLogin());
-
-
   }
 
 }

@@ -129,30 +129,20 @@ export class UserService {
   }
   login(username: string, password: string) {
 
-    //  let headers = new Headers({ 'Content-Type': 'application/json' });
-    //  let options = new RequestOptions({ headers: headers });
     let body = {
       username: username,
       password: password
     };
 
-    let rbody = JSON.stringify(body);
-    //console.log('servin' + body.email)
-    // console.log('we loggin in' + body.email);
-    // return this._http.post('http://localhost:8000/api/users/login', { email: username, password: password })
-    //     .subscribe(
-    //   res => {
-    //     console.log(res);
-    //   },
-    //   err => {
-    //     console.log("service Error occured");
-    //   });
 
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
 
 
-
-
+  }
+  logout(){
+    this.isAuthenticated = false;
+    window.localStorage.clear();
+    this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', httpOptions);
   }
   addStudent(body : {}) {
 
@@ -183,11 +173,7 @@ export class UserService {
       
        return this._http.get<IPerson>('http://kariliner.dedicated.co.za:8080/willow-schools/api/person/email?email='+user, httpOptions);
     }
-  
-  logout() {
-    this.isAuthenticated = false;
-    window.localStorage.clear();
-  }
+
 
   directSearchJob(searchQ: string) {
 
