@@ -13,6 +13,10 @@ import { ProfileComponent } from '@app/comps/profile/profile.component';
 import { ForgotpasswordComponent } from '@app/comps/forgotpassword/forgotpassword.component';
 import { AuthguardGuard } from './shared/authguard.guard';
 import { LoginComponent } from '@app/comps/login/login.component';
+import { StudentslistComponent } from './comps/studentslist/studentslist.component';
+import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
+import { AddteacherComponent } from '@app/comps/addteacher/addteacher.component';
+
 
 
 const routes: Routes = [
@@ -29,20 +33,26 @@ const routes: Routes = [
     }
   },
   {
+    path: 'addteacher',
+    component: AddteacherComponent,
+    data: {
+      title: 'Settings'
+    }
+  },
+  {
+    path: 'addstudent',
+    component: AddstudentComponent,
+    data: {
+      title: 'Settings'
+    }
+  },
+  {
     path: 'home',
     component: HomeComponent,
     data: {
       title: 'Home'
     }
   },
- /* {
-    path: 'addstudent',
-    component: AddstudentComponent,
-    canActivate: [AuthguardGuard],
-    data: {
-      title: 'Students'
-    }
-  },*/
   {
     path: 'profile',
     component: ProfileComponent,
@@ -97,6 +107,13 @@ const routes: Routes = [
   {
     path: 'forgotpassword',
     component:ForgotpasswordComponent,
+    data: {
+      title: 'Teachers'
+    }
+  },
+  {
+    path: 'studentslist',
+    component:StudentslistComponent,
     data: {
       title: 'Teachers'
     }

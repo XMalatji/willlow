@@ -3,24 +3,6 @@
   <mat-sidenav #sidenav mode="push">
     <mat-nav-list *ngIf="userService.isAuthenticated">
 
-      <div *ngIf="userService.getRole() == 'ADMINISTRATOR'">
-          <div class="mt-60">
-            <a mat-list-item *ngFor="let item of sideMenuAdmin" (click)="sidenav.close()"
-            [routerLink]="[item.link]" routerLinkActive="active">
-            <mat-icon>{{item.icon}}</mat-icon>  {{item.label}}
-            </a>
-          </div>
-      </div>
-
-      <div *ngIf="userService.getRole() == 'SUBJECT_TEACHER'">
-          <div class="mt-60">
-            <a mat-list-item *ngFor="let item of sideMenuTeacher" (click)="sidenav.close()"
-            [routerLink]="[item.link]" routerLinkActive="active">
-            <mat-icon>{{item.icon}}</mat-icon>  {{item.label}}
-            </a>
-          </div>
-      </div>
-
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -69,9 +51,8 @@
           
               <div>
                 <ul class="menu-ul">
-                  <li>View Teacher</li>
-                  <li>Create Teacher</li>
-                  <li>Edit Teacher</li>
+                  <li><a href="#" routerLink="/addteacher" (click)="sidenav.close()">Create Teacher</a></li>
+                  <li><a href="#" routerLink="/teachers" (click)="sidenav.close()">View Teacher</a></li>
                 </ul>
               </div>
                  
@@ -88,9 +69,9 @@
               
                   <div>
                     <ul class="menu-ul">
-                      <li>View Students</li>
-                      <li>Create Students</li>
-                      <li>Edit Students</li>
+                      <li><a href="#" routerLink="/addstudent" (click)="sidenav.close()">Create Students</a></li>
+                      <li><a href="#" routerLink="/studentslist" (click)="sidenav.close()">View Students</a></li>
+                      <!-- <li><a href="#" routerLink="#" (click)="sidenav.close()">Edit Students</a></li> -->
                     </ul>
                   </div>
                      
