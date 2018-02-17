@@ -39,6 +39,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataInterceptor } from './shared/data.interceptor';
 import { LookupDataService } from './lookup-data.service';
 import {MomentModule} from 'angular2-moment/moment.module';
+import { ClassService } from './services/class.service';
 
 
 
@@ -70,7 +71,7 @@ import {MomentModule} from 'angular2-moment/moment.module';
       AddstudentComponent,
        SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent
     ],
-  providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService,
+  providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService, ClassService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DataInterceptor,

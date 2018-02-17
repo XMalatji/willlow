@@ -38,6 +38,7 @@ const CAMBRIDGE_DATA : GradeOffering[] = [
 })
 export class CurriculumComponent implements OnInit {
 
+
 curriculums = [
     {value: 'national', viewValue: 'National'},
     {value: 'cambridge', viewValue: 'Cambridge'}
@@ -84,11 +85,12 @@ grades = [
   secondCtrl:FormControl;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
-
+  subjectList:FormControl;
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.secondCtrl =  new FormControl("", [Validators.required]);
+    this.subjectList =  new FormControl("", [Validators.required]);
   	this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -103,7 +105,10 @@ grades = [
     });
 
   }
-
+  addCurriculum(){
+   let subjects = this.subjects;
+   
+  }
 add(event: MatChipInputEvent): void {
     let input = event.input;
     let value = event.value;

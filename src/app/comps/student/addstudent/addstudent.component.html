@@ -1,110 +1,58 @@
-<!-- <form [formGroup]="addStudentForm" novalidate>
-
-  <div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4 col-sm-12">
+<form name="addTeacherForm" [formGroup]="addStudentForm" (ngSubmit)="addStudent()" novalidate>
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-8">
         <mat-form-field class="full-width">
-            <input matInput placeholder="Name" formControlName="givenName">
-          </mat-form-field> <br />
-          <mat-form-field class="full-width">
-              <input matInput placeholder="Surname"  formControlName="familyName">
-            </mat-form-field> <br />
-            <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Date of birth">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field> <br />
-              <mat-form-field class="full-width">
-                  <input matInput placeholder="Cellphone number" formControlName="cellNo">
-                </mat-form-field> <br />
-
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="Email address" formControlName="emailAddress">
-                  </mat-form-field> <br />
-               
-                  <mat-form-field class="full-width">
-                      <input type="number" matInput placeholder="Grade" formControlName="schoolGrade">
-                    </mat-form-field> <br />
-
-                    <mat-form-field class="full-width">
-                        <input type="number" matInput placeholder="School ID Number" formControlName="schoolId">
-                      </mat-form-field> <br />
-                
-    </div>
-    <div class="col-md-4 col-sm-12">
-
-        Profile Pic
-        <input type="file" name="pic" accept="image/*">
+          <mat-select placeholder="Academic Year">
+            <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
+              {{ academicYear.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Student name" formControlName="givenName">
+        </mat-form-field>
         <br />
-        <div class="mt-2">
-            <button mat-button mat-raised-button (click)="addStudent()">Add Student </button>
-
-        </div>
-    
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Surname" formControlName="familyName">
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" placeholder="Date of birth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Student ID" formControlName="studentId" value="">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Cellphone number" formControlName="cellphone" value="">
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email address" formControlName="emailAddress" value="">
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Student grade" formControlName="schoolGrade">
+            <mat-option *ngFor="let grade of grades" [value]="grade.value">
+              {{ grade.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Student gender" formControlName="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+              {{ gender.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br />
+        <button mat-button mat-raised-button>Add Student</button>
       </div>
-  </div>
-
+    </div>
   </div>
 </form>
--->
-
-
-
-<form name="addTeacherForm" [formGroup]="addStudentForm" (ngSubmit)="addStudent()" novalidate>
-        <div class="container">
-           <div class="row mt-4">
-              <div class="col-8">
-                <mat-form-field class="full-width">
-                   <mat-select placeholder="Academic Year">
-                     <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
-                       {{ academicYear.viewValue }}
-                     </mat-option>
-                   </mat-select>
-                 </mat-form-field>
-                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Student name" formControlName="givenName">
-                 </mat-form-field>
-                 <br />
-                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Surname" formControlName="familyName">
-                 </mat-form-field>
-                 <br />
-                 <mat-form-field>
-                    <input matInput formControlName="dateOfBirth"  [matDatepicker]="picker" placeholder="Date of birth">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                 <br />
-                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Student ID" formControlName="studentId" value="">
-                 </mat-form-field>
-                 <br />
-                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Cellphone number" formControlName="cellphone" value="">
-                 </mat-form-field>
-                 <br />
-                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Email address"  formControlName="emailAddress" value="">
-                 </mat-form-field>
-                 <br/>
-                 <mat-form-field class="full-width">
-                   <mat-select placeholder="Student grade" formControlName="schoolGrade">
-                     <mat-option *ngFor="let grade of grades" [value]="grade.value">
-                       {{ grade.viewValue }}
-                     </mat-option>
-                   </mat-select>
-                 </mat-form-field>
-                 <br />
-                 <mat-form-field class="full-width">
-                   <mat-select placeholder="Student gender" formControlName="gender">
-                     <mat-option *ngFor="let gender of genders" [value]="gender.value">
-                       {{ gender.viewValue }}
-                     </mat-option>
-                   </mat-select>
-                 </mat-form-field>
-                 <br />
-                 <button mat-button mat-raised-button>Add Student</button>
-              </div>
-           </div>
-        </div>
-        </form>

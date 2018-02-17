@@ -10,7 +10,7 @@ import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import { Router } from '@angular/router';
+
 import { User } from '@app/tyyypes/user';
 import { IStudent } from '../../tyyypes/tyyypes';
 
@@ -19,7 +19,7 @@ const httpOptions = {
 };
 
 @Injectable()
-export class UserService implements OnInit {
+export class UserService {
   theUser: {};
   name: string;
   surname: string;
@@ -37,8 +37,7 @@ export class UserService implements OnInit {
   //   })
   // };
   constructor(
-    private _http: HttpClient,
-    private _router: Router
+    private _http: HttpClient
   ) {
 
     // this.jobsCollectionRef = this.afs.collection<IJob>('jobss');

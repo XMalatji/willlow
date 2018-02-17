@@ -70,6 +70,7 @@ export class ProfileComponent implements OnInit {
 
      if(data){
       console.log('pwd changed')
+      this.toastr.success(`Successfully changed! `);
       this.changedPwd=true;
      }
      else{

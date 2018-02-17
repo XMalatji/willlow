@@ -1,4 +1,16 @@
-<form name="addClassForm" [formGroup]="addClassForm" (ngSubmit)="addStudent()" novalidate>
+<nav mat-tab-nav-bar>
+    <a mat-tab-link (click)="addClassOpen()"> 
+        Add Class
+     </a>
+     <a mat-tab-link (click)="viewClassOpen()"> 
+        View Classes
+     </a>
+
+</nav>
+
+
+
+<form name="addClassForm" *ngIf="addClassMode" [formGroup]="addClassForm" (ngSubmit)="buildClass()" novalidate>
   
 <div class="container mt-3">
    <div class="example-container">
@@ -42,7 +54,7 @@
             <mat-form-field>
             <mat-select formControlName="classTeacher" required>
               <div *ngFor="let teacher of Teachers">
-                  <mat-option value="option">{{teacher.givenName}}</mat-option>
+                  <mat-option [value]="teacher.id">{{teacher.givenName}}</mat-option>
               </div>
               
             </mat-select>
