@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -39,24 +40,24 @@ const CAMBRIDGE_DATA : GradeOffering[] = [
 export class CurriculumComponent implements OnInit {
 
 
+  curriForm: FormGroup;
 curriculums = [
     {value: 'national', viewValue: 'National'},
     {value: 'cambridge', viewValue: 'Cambridge'}
   ];
-
-grades = [
-    {value: '1', viewValue: 'Grade 1'},
-    {value: '2', viewValue: 'Grade 2'},
-    {value: '3', viewValue: 'Grade 3'},
-    {value: '4', viewValue: 'Grade 4'},
-    {value: '5', viewValue: 'Grade 5'},
-    {value: '6', viewValue: 'Grade 6'},
-    {value: '7', viewValue: 'Grade 7'},
-    {value: '8', viewValue: 'Grade 8'},
-    {value: '9', viewValue: 'Grade 9'},
-    {value: '10', viewValue: 'Grade 10'},
-    {value: '11', viewValue: 'Grade 11'},
-    {value: '12', viewValue: 'Grade 12'},
+  grades = [
+    { value: 'GRADE_ONE', viewValue: '1' },
+    { value: 'GRADE_TWO', viewValue: '2' },
+    { value: 'GRADE_THREE', viewValue: '3' },
+    { value: 'GRADE_FOUR', viewValue: '4' },
+    { value: 'GRADE_FIVE', viewValue: '5' },
+    { value: 'GRADE_SIX', viewValue: '6' },
+    { value: 'GRADE_SEVEN', viewValue: '7' },
+    { value: 'GRADE_EIGHT', viewValue: '8' },
+    { value: 'GRADE_NINE', viewValue: '9' },
+    { value: 'GRADE_TEN', viewValue: '10' },
+    { value: 'GRADE_ELEVEN', viewValue: '11' },
+    { value: 'GRADE_TWELVE', viewValue: '12' }
   ];
 
   visible: boolean = true;
@@ -82,15 +83,20 @@ grades = [
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  firstCtrl:FormControl;
   secondCtrl:FormControl;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
   subjectList:FormControl;
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.secondCtrl =  new FormControl("", [Validators.required]);
     this.subjectList =  new FormControl("", [Validators.required]);
+    this.firstCtrl =  new FormControl("", [Validators.required]);
   	this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -103,11 +109,25 @@ grades = [
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
     });
+    this.curriForm = new FormGroup({
+      typeOfCurriculum: this.firstCtrl,
+      schoolGrade: this.secondCtrl,
+ 
+    });
 
   }
   addCurriculum(){
+
+    console.log('oi'+JSON.stringify(this.firstFormGroup.value));
    let subjects = this.subjects;
-   
+   let grade = this.secondFormGroup.value;
+   let curriculum = this.firstFormGroup.value;
+    let body = {};
+    body["typeOfCurriculum"] = curriculum;
+
+    body["schoolGrade"] = grade;
+    body["gradeSubjects"] = this.subjects;
+    console.log(`Currciulum@@@@@@ ${JSON.stringify(body)}`)
   }
 add(event: MatChipInputEvent): void {
     let input = event.input;
