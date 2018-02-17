@@ -40,6 +40,9 @@ import { DataInterceptor } from './shared/data.interceptor';
 import { LookupDataService } from './lookup-data.service';
 import {MomentModule} from 'angular2-moment/moment.module';
 import { ClassService } from './services/class.service';
+import { StudentslistComponent } from './comps/studentslist/studentslist.component';
+import { MatPaginator } from '@angular/material';
+import { AddteacherComponent } from './comps/addteacher/addteacher.component';
 
 
 
@@ -69,9 +72,9 @@ import { ClassService } from './services/class.service';
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
       AddstudentComponent,
-       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent, StudentslistComponent, AddteacherComponent
     ],
-  providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService, ClassService,
+  providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService, ClassService, MatPaginator,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DataInterceptor,
