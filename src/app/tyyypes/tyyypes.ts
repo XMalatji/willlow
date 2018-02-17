@@ -24,7 +24,18 @@
         
   }
 
+export interface ICurriculum {
 
+
+  typeOfCurriculum :string,
+schoolGrade: string,
+  gradeSubjects : [
+     {
+        name : string
+        subjectTeacher: string,
+     }
+  ]
+}
   export const grades = [
     { value: 'GRADE_ONE', viewValue: '1' },
     { value: 'GRADE_TWO', viewValue: '2' },

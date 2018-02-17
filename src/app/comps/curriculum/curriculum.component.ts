@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { ClassService } from '../../services/class.service';
+import { ICurriculum } from '../../tyyypes/tyyypes';
 
 
 
@@ -16,20 +18,20 @@ export interface Element {
 export interface GradeOffering {
   grade: number;
   subjects: string[];
- 
+
 }
-const  ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+const ELEMENT_DATA: Element[] = [
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
 ];
 
-const CAMBRIDGE_DATA : GradeOffering[] = [
-  {grade: 1, subjects: ['Maths','English']},
-  {grade: 2, subjects: ['English','Maths']},
-  {grade: 3, subjects: ['L.o','Bio']}
+const CAMBRIDGE_DATA: GradeOffering[] = [
+  { grade: 1, subjects: ['Maths', 'English'] },
+  { grade: 2, subjects: ['English', 'Maths'] },
+  { grade: 3, subjects: ['L.o', 'Bio'] }
 ];
 
 @Component({
@@ -41,9 +43,9 @@ export class CurriculumComponent implements OnInit {
 
 
   curriForm: FormGroup;
-curriculums = [
-    {value: 'national', viewValue: 'National'},
-    {value: 'cambridge', viewValue: 'Cambridge'}
+  curriculums = [
+    { value: 'NATIONAL_CURRICULUM', viewValue: 'National' },
+    { value: 'CAMBRIDGE_CURRICULUM', viewValue: 'Cambridge' }
   ];
   grades = [
     { value: 'GRADE_ONE', viewValue: '1' },
@@ -69,35 +71,38 @@ curriculums = [
   separatorKeysCodes = [ENTER, COMMA];
 
   subjects = [
-    
+
   ];
 
-  
 
 
+  addCurriculumMode: boolean = true;
 
-  displayedColumns = ['grade', 'subjects'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns = ['schoolGrade', 'gradeSubjects'];
 
-  cambridgeSource = CAMBRIDGE_DATA;
+  cambridgeSource: ICurriculum[];
+
+  nationalSource: ICurriculum[];
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  firstCtrl:FormControl;
-  secondCtrl:FormControl;
+  firstCtrl: FormControl;
+  secondCtrl: FormControl;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
-  subjectList:FormControl;
+  subjectList: FormControl;
+
   constructor(
     private _formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private classService: ClassService
   ) { }
 
   ngOnInit() {
-    this.secondCtrl =  new FormControl("", [Validators.required]);
-    this.subjectList =  new FormControl("", [Validators.required]);
-    this.firstCtrl =  new FormControl("", [Validators.required]);
-  	this.firstFormGroup = this._formBuilder.group({
+    this.secondCtrl = new FormControl("", [Validators.required]);
+    this.subjectList = new FormControl("", [Validators.required]);
+    this.firstCtrl = new FormControl("", [Validators.required]);
+    this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -109,27 +114,56 @@ curriculums = [
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
     });
-    this.curriForm = new FormGroup({
-      typeOfCurriculum: this.firstCtrl,
-      schoolGrade: this.secondCtrl,
- 
-    });
+
+    this.classService.getCambridgeCurriculum().subscribe(
+      data => {
+        console.log('cambridge ###' + JSON.stringify(data));
+        this.cambridgeSource = data;
+      },
+      err => {
+        console.log(`Server error | ${err}`);
+
+      }
+
+    );
+
+    this.classService.getNationalCurriculum().subscribe(
+      data => {
+        console.log('cambridge ###' + JSON.stringify(data));
+        this.nationalSource = data;
+      },
+      err => {
+        console.log(`Server error | ${err}`);
+
+      }
+
+    );
 
   }
-  addCurriculum(){
+  addCurriculum() {
 
-    console.log('oi'+JSON.stringify(this.firstFormGroup.value));
-   let subjects = this.subjects;
-   let grade = this.secondFormGroup.value;
-   let curriculum = this.firstFormGroup.value;
+    //  console.log('oi'+JSON.stringify(this.firstFormGroup.controls['firstCtrl'].value));
+    let subjects = this.subjects;
+    let grade = this.secondFormGroup.controls['secondCtrl'].value
+    let curriculum = this.firstFormGroup.controls['firstCtrl'].value;
     let body = {};
     body["typeOfCurriculum"] = curriculum;
 
     body["schoolGrade"] = grade;
     body["gradeSubjects"] = this.subjects;
-    console.log(`Currciulum@@@@@@ ${JSON.stringify(body)}`)
+    this.classService.addNewCurriculum(body).subscribe(
+      data => {
+        console.log('Success @@@@@@@@' + JSON.stringify(data));
+        this.toastr.success(`Successfully added curriculum.`);
+        this.addCurriculumMode = false;
+      },
+      err => {
+        console.log(`Server error | Obj ${JSON.stringify(body)}`);
+        this.toastr.error(`an error happened - curriculum.`);
+      }
+    );
   }
-add(event: MatChipInputEvent): void {
+  add(event: MatChipInputEvent): void {
     let input = event.input;
     let value = event.value;
 
@@ -144,11 +178,11 @@ add(event: MatChipInputEvent): void {
     }
   }
 
-  prepSubjects(){
+  prepSubjects() {
     let grade = this.secondCtrl.value;
     console.log(grade)
   }
- remove(subject: any): void {
+  remove(subject: any): void {
     let index = this.subjects.indexOf(subject);
 
     if (index >= 0) {
