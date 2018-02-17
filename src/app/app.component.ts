@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { filter } from 'rxjs/operators/filter';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 import {
   ActionAuthLogin,
@@ -25,6 +27,9 @@ import { UserService } from './shared/services/user.service';
   animations: [routerTransition]
 })
 export class AppComponent implements OnInit, OnDestroy {
+
+  panelOpenState: boolean = false;
+  
   private unsubscribe$: Subject<void> = new Subject<void>();
 
   @HostBinding('class') componentCssClass;

@@ -24,6 +24,7 @@ import {   MatNativeDateModule, MatDatepickerModule } from '@angular/material';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -51,7 +52,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTableModule,
     MatStepperModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   declarations: [BigInputComponent, BigInputActionComponent],
   exports: [
@@ -78,7 +80,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     BigInputActionComponent,
     MatStepperModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
+
   ]
 })
 export class SharedModule {}
