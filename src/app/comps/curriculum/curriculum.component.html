@@ -1,5 +1,5 @@
 <div class="container">
-   <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+     <mat-horizontal-stepper *ngIf="addCurriculumMode" [linear]="isLinear" #stepper="matHorizontalStepper">
    <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
          <ng-template matStepLabel>Curriculum</ng-template>
@@ -57,47 +57,9 @@
       </form>
    </mat-step>
    </mat-horizontal-stepper>
+
+
+
    <br/>
-   <div class="row">
-   <div class="col-md-6">
-      <div class="docs-example-viewer-title">
-          <div class="docs-example-viewer-title-spacer custom-table-heading">National</div>
-      </div>
-      <br/>
-  
-   </div>
-
-   <div class="col-md-6">
-      <div class="docs-example-viewer-title">
-          <div class="docs-example-viewer-title-spacer custom-table-heading">Cambridge</div>
-      </div>
-      <br/>
-      <div class="example-container mat-elevation-z8">
-        <mat-table #table [dataSource]="cambridgeSource">
-
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
-          <!-- Position Column -->
-          <ng-container matColumnDef="grade">
-            <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
-          </ng-container>
-
-          <!-- Name Column -->
-          <ng-container matColumnDef="subjects">
-            <mat-header-cell *matHeaderCellDef> Subjects </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.subjects}} </mat-cell>
-          </ng-container>
-
-      
-
-        
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-      </div>
-   </div>
-   </div>
+   <app-curriculum-view></app-curriculum-view>
 </div>

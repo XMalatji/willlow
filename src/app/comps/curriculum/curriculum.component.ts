@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
+import { ClassService } from '../../services/class.service';
 
 
 
@@ -42,8 +43,8 @@ export class CurriculumComponent implements OnInit {
 
   curriForm: FormGroup;
 curriculums = [
-    {value: 'national', viewValue: 'National'},
-    {value: 'cambridge', viewValue: 'Cambridge'}
+    {value: 'NATIONAL_CURRICULUM', viewValue: 'National'},
+    {value: 'CAMBRIDGE_CURRICULUM', viewValue: 'Cambridge'}
   ];
   grades = [
     { value: 'GRADE_ONE', viewValue: '1' },
@@ -74,7 +75,7 @@ curriculums = [
 
   
 
-
+  addCurriculumMode:boolean = true;
 
   displayedColumns = ['grade', 'subjects'];
   dataSource = ELEMENT_DATA;
@@ -90,7 +91,8 @@ curriculums = [
   subjectList:FormControl;
   constructor(
     private _formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private classService:ClassService
   ) { }
 
   ngOnInit() {
@@ -118,16 +120,26 @@ curriculums = [
   }
   addCurriculum(){
 
-    console.log('oi'+JSON.stringify(this.firstFormGroup.value));
+  //  console.log('oi'+JSON.stringify(this.firstFormGroup.controls['firstCtrl'].value));
    let subjects = this.subjects;
-   let grade = this.secondFormGroup.value;
-   let curriculum = this.firstFormGroup.value;
+   let grade = this.secondFormGroup.controls['secondCtrl'].value
+   let curriculum = this.firstFormGroup.controls['firstCtrl'].value;
     let body = {};
     body["typeOfCurriculum"] = curriculum;
 
     body["schoolGrade"] = grade;
     body["gradeSubjects"] = this.subjects;
-    console.log(`Currciulum@@@@@@ ${JSON.stringify(body)}`)
+    this.classService.addNewCurriculum(body).subscribe(
+      data => {
+        console.log('Success @@@@@@@@' + JSON.stringify(data));
+        this.toastr.success(`Successfully added curriculum.`);
+        this.addCurriculumMode=false;
+      },
+      err => {
+        console.log(`Server error | Obj ${JSON.stringify(body)}`);
+        this.toastr.error(`an error happened - curriculum.`);
+      }
+    );
   }
 add(event: MatChipInputEvent): void {
     let input = event.input;

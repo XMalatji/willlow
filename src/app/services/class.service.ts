@@ -29,6 +29,12 @@ export class ClassService {
     return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/grade-class', body, httpOptions);
   }
 
+  addNewCurriculum(body : {}){
+    let rbody = JSON.stringify(body);
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering', body, httpOptions);
+ 
+  }
+
 
   getClasses(){
     return this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/grade-class', httpOptions);
