@@ -5,7 +5,7 @@
 
       <mat-accordion>
         <mat-expansion-panel>
-          <mat-expansion-panel-header>
+          <mat-expansion-panel-header class="mt-65">
             <mat-panel-title>
               Manage Curriculum
             </mat-panel-title>
@@ -13,9 +13,9 @@
       
           <div>
             <ul class="menu-ul">
-              <li>View curriculum</li>
-              <li>Create curriculum</li>
-              <li>Edit curriculum</li>
+              <li><a href="#" routerLink="/curriculum" (click)="sidenav.close()">Create curriculum</a></li>
+              <li><a href="#" routerLink="/curriculumlist" (click)="sidenav.close()">View curriculum</a></li>
+              <!-- <li>Edit curriculum</li> -->
             </ul>
           </div>
 
@@ -34,7 +34,7 @@
               <ul class="menu-ul">
                 <li>View Class</li>
                 <li>Create Class</li>
-                <li>Edit Class</li>
+                <!-- <li>Edit Class</li> -->
               </ul>
             </div>
                

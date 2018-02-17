@@ -44,7 +44,7 @@ import { StudentslistComponent } from './comps/studentslist/studentslist.compone
 import { MatPaginator } from '@angular/material';
 import { AddteacherComponent } from './comps/addteacher/addteacher.component';
 import { CurriculumViewComponent } from './comps/curriculum/view/view.component';
-import { ViewComponent } from './comps/class-comp/view/view.component';
+import { CurriculumlistComponent } from './curriculumlist/curriculumlist.component';
 
 
 
@@ -73,15 +73,11 @@ import { ViewComponent } from './comps/class-comp/view/view.component';
     AppComponent, HeaderComponent, FooterComponent,
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
-
-   
+      AddstudentComponent,
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent, StudentslistComponent, AddteacherComponent,
+      AddstudentComponent, CurriculumViewComponent,
        SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent,
-        StudentslistComponent, AddteacherComponent, AddstudentComponent,
-
-       CurriculumViewComponent
-
-     
- 
+        CurriculumlistComponent
     ],
   providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService, ClassService, MatPaginator,
     {
