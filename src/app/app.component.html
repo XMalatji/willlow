@@ -32,8 +32,8 @@
         
             <div>
               <ul class="menu-ul">
-                <li><a href="#" routerLink="/curriculum" (click)="sidenav.close()">View Class</a></li>
-                <li><a href="#" routerLink="/curriculum" (click)="sidenav.close()">Create Class</a></li>
+                <li><a href="#" routerLink="/" (click)="sidenav.close()">Create Class</a></li>                  
+                <li><a href="#" routerLink="/" (click)="sidenav.close()">View Class</a></li>
                 <!-- <li>Edit Class</li> -->
               </ul>
             </div>
@@ -86,7 +86,7 @@
 
     <div class="toolbar">
       <mat-toolbar color="primary">
-        <button mat-icon-button *ngIf="userService.loggedIn()" (click)="sidenav.open()">
+        <button mat-icon-button (click)="sidenav.open()">
           <mat-icon>menu</mat-icon>
         </button>
 
@@ -101,7 +101,7 @@
                 [matMenuTriggerFor]="toolbarUserMenu">
           <mat-icon>person</mat-icon>
         </button>
-        <mat-menu #toolbarUserMenu="matMenu" >
+        <mat-menu #toolbarUserMenu="matMenu">
           <button mat-menu-item (click)="profile()">
             <mat-icon>fingerprint</mat-icon>
             <span>Profile</span>

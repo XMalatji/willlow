@@ -96,3 +96,23 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+mat-row:nth-child(even) {
+  background-color: #ffdd0245;
+}
+
+.default-theme .mat-cell {
+  color: rgba(0, 0, 0, 0.87);
+  color: #293592;
+}
+
+.default-theme .mat-header-cell {
+  color: #fff;
+}
+
+.default-theme .mat-header-row {
+  font-weight: bold;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  background: #293592;
+}
