@@ -39,9 +39,15 @@ export class ClassService {
     //return this.teacher;
     
      return this._http.get<ICurriculum[]>
-     ('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering/curriculum?curriculum=NATIONAL_CURRICULUM', httpOptions);
+     ('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering/curriculum?curriculum=CAMBRIDGE_CURRICULUM', httpOptions);
   }
-
+  getNationalCurriculum():Observable<ICurriculum[]>{
+    // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
+      //return this.teacher;
+      
+       return this._http.get<ICurriculum[]>
+       ('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering/curriculum?curriculum=NATIONAL_CURRICULUM', httpOptions);
+    }
 
   getClasses(){
     return this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/grade-class', httpOptions);
