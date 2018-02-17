@@ -74,7 +74,8 @@ import { CurriculumlistComponent } from './curriculumlist/curriculumlist.compone
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
       AddstudentComponent,
-       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent, StudentslistComponent, AddteacherComponent,
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent,
+        ForgotpasswordComponent, StudentslistComponent, AddteacherComponent,
       AddstudentComponent, CurriculumViewComponent,
        SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent,
         CurriculumlistComponent

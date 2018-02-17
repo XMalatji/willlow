@@ -31,11 +31,7 @@ export class HomeComponent implements OnInit {
      }
 
   ngOnInit() {
-    console.log(this.userService.getName());
   
-      // this.getStudents();
-      // this.students$ = this.store.select(state => state.students)
-      // this.students$.forEach( v => console.log(v))
   }
   manageTeachers(){
 
