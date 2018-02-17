@@ -20,8 +20,9 @@ export class ProfileComponent implements OnInit {
   
   changedPwd:boolean=false;
   profileForm: FormGroup;
-  uPassword1: FormControl;
-  uPassword2: FormControl;
+  uPasswordOld: FormControl;
+  uPasswordNew: FormControl;
+  uPasswordNew2: FormControl;
   constructor(
     private userService:UserService,
     private teacherService:TeachersService,
@@ -29,12 +30,14 @@ export class ProfileComponent implements OnInit {
     
   ) { 
 
-    this.uPassword1 = new FormControl("", [Validators.required]);
-    this.uPassword2 = new FormControl("", [Validators.required]);
+    this.uPasswordOld = new FormControl("", [Validators.required]);
+    this.uPasswordNew = new FormControl("", [Validators.required]);
+    this.uPasswordNew2 = new FormControl("", [Validators.required]);
 
     this.profileForm = new FormGroup({
-      uPassword1: this.uPassword1,
-      uPassword2: this.uPassword2
+      uPasswordOld: this.uPasswordOld,
+      uPasswordNew: this.uPasswordNew,
+      uPasswordNew2: this.uPasswordNew2
     });
   }
 
@@ -71,7 +74,7 @@ export class ProfileComponent implements OnInit {
 
   changePwd(){
 
-    this.userService.changePwd(this.uPassword1.value, this.uPassword2.value).subscribe(
+    this.userService.changePwd(this.uPasswordOld.value, this.uPasswordNew.value).subscribe(
       data => {
      //console.log(data);
 

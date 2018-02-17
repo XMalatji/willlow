@@ -40,16 +40,16 @@
     <div class="col-md-4">
     
       <mat-form-field class="full-width">
-          <input matInput type="password" placeholder="Current password" value="12345678">
+          <input matInput type="password" formControlName="uPasswordOld" placeholder="Current password">
         </mat-form-field> <br />
     </div>
     <div class="col-md-8">
     
         <mat-form-field class="half-width">
-            <input matInput type="password" placeholder="New password" formControlName="uPassword1">
+            <input matInput type="password" placeholder="New password" formControlName="uPasswordNew">
           </mat-form-field>
           <mat-form-field class="half-width">
-              <input matInput type="password" placeholder="Confirm password" formControlName="uPassword2">
+              <input matInput type="password" placeholder="Confirm password" formControlName="uPasswordNew2">
             </mat-form-field> <br />
 
             <span *ngIf="changedPwd"><h3> Your password has been reset. </h3>  </span>

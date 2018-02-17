@@ -10,7 +10,7 @@ import {
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '@app/shared/services/user.service';
 import { Router } from '@angular/router';
-import {LookupDataService} from '../../lookup-data.service';
+import { LookupDataService } from '../../lookup-data.service';
 
 
 @Component({
@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<any>,
     public userService: UserService,
- 
-    private _router:Router,
+
+    private _router: Router,
     public lookupDataService: LookupDataService
-  ) { 
+  ) {
     this.uEmail = new FormControl("", [Validators.required]);
     this.uPassword = new FormControl("", [Validators.required]);
 
@@ -40,61 +40,42 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
   }
 
   login() {
     let user = (this.logForm.value);
-    //window.localStorage.jwt=1234;
-  //  let body = JSON.stringify(user);
-    console.log('oi');
 
-    let success:boolean=false;
+    let success: boolean = false;
     this.userService.login(this.uEmail.value, this.uPassword.value).subscribe(
       data => {
-     //console.log(data);
+      if (data) {
 
-     if(data){
-     
-       window.localStorage.jwt = data["jwt"];
-       window.localStorage.user = data["principal"].name;
-       window.localStorage.role = data["roles"];
-       console.log('logged in'+JSON.stringify(data));
-      //  this.toast.success('Logged in');
-       this._router.navigate(['/home']);
-       console.log("@@@ we are here because login successful !!!");
-       this.lookupDataService.getLookupData();
-     }
-     else{
-       console.log('err')
-  
-     }
-    //   //  
-    //     //login
-    //     console.log('route me')
-    //     this._router.navigate(['/home']);
-     },
-     err => {
-   
-         this.handleError(err);
-   
-    //   }
+          window.localStorage.jwt = data["jwt"];
+          window.localStorage.user = data["principal"].name;
+          window.localStorage.role = data["roles"];
+
+          this._router.navigate(['/home']);
+          this.lookupDataService.getLookupData();
+        }
+        else {
+          console.log('err')
+
+        }
+      },
+      err => {
+        this.handleError(err);
       });
-
-
-
   }
- 
 
-
-  handleError(err){
+  handleError(err) {
     console.log(err)
   }
 
   onLoginClick() {
     this.store.dispatch(new ActionAuthLogin());
 
-    
+
   }
 
 }
