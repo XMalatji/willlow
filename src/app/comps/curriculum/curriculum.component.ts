@@ -4,6 +4,7 @@ import {ENTER, COMMA} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { ClassService } from '../../services/class.service';
+import { ICurriculum } from '../../tyyypes/tyyypes';
 
 
 
@@ -77,10 +78,10 @@ curriculums = [
 
   addCurriculumMode:boolean = true;
 
-  displayedColumns = ['grade', 'subjects'];
+  displayedColumns = ['schoolGrade', 'gradeSubjects'];
   dataSource = ELEMENT_DATA;
 
-  cambridgeSource = CAMBRIDGE_DATA;
+  cambridgeSource:ICurriculum[];
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -111,11 +112,20 @@ curriculums = [
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
     });
-    this.curriForm = new FormGroup({
-      typeOfCurriculum: this.firstCtrl,
-      schoolGrade: this.secondCtrl,
- 
-    });
+
+    this.classService.getCambridgeCurriculum().subscribe(
+      data => {
+        console.log('cambridge ###' + JSON.stringify(data));
+     this.cambridgeSource = data;
+      },
+      err => {
+        console.log(`Server error | ${err}`);
+       
+      }
+      
+    );
+
+
 
   }
   addCurriculum(){
