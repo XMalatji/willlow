@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IStudent } from '../../tyyypes/tyyypes';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'anms-studentslist',
@@ -7,12 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentslistComponent implements OnInit {
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['givenName', 'familyName', 'dateOfBirth'];
   dataSource = ELEMENT_DATA;
+studentSource:IStudent[];
 
-  constructor() { }
+  constructor(private studentService:StudentService) { }
 
   ngOnInit() {
+
+    this.studentService.getStudents().subscribe(
+      data => {
+      //  console.log('here -' +JSON.stringify(data));
+//console.log('ooo'+data)
+        this.studentSource = data;
+      //  this.counter=this.teachersSource;
+       // console.log('sauce'+JSON.stringify(this.teachersSource));
+      }
+    );
+
   }
 
 }

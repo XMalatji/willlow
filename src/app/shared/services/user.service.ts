@@ -12,7 +12,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 import { User } from '@app/tyyypes/user';
-import { IStudent } from '../../tyyypes/tyyypes';
+import { IStudent, IPerson } from '../../tyyypes/tyyypes';
+import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -100,14 +101,18 @@ export class UserService {
     }
 
   }
+  getUserName(){
+    return window.localStorage.user;
+  }
   changePwd(pwd1: string, pwd2: string) {
     let body = {
-      username: this.getUser(),
+      username: this.getUserName(),
       oldPassword: pwd1,
       newPassword: pwd2
     };
 
     let rbody = JSON.stringify(body);
+    console.log(`Pwd payload ${JSON.stringify(body)}`)
     //console.log('servin' + body.email)
     // console.log('we loggin in' + body.email);
     // return this._http.post('http://localhost:8000/api/users/login', { email: username, password: password })
@@ -119,9 +124,7 @@ export class UserService {
     //     console.log("service Error occured");
     //   });
 
-    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', body, httpOptions);
-
-
+    return this._http.post('http://kariliner.dedicated.co.za:8080/willow-schools/api/credentials/change-password', body, httpOptions);
 
   }
   login(username: string, password: string) {
@@ -174,11 +177,13 @@ export class UserService {
 
   }
 
-  getUser() {
-
-
-
-  }
+  getUser(user:string):Observable<IPerson>{
+    // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
+      //return this.teacher;
+      
+       return this._http.get<IPerson>('http://kariliner.dedicated.co.za:8080/willow-schools/api/person/email?email='+user, httpOptions);
+    }
+  
   logout() {
     this.isAuthenticated = false;
     window.localStorage.clear();

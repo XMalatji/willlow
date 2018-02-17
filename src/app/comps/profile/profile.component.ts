@@ -48,6 +48,13 @@ export class ProfileComponent implements OnInit {
   
     if(role==='ADMINISTRATOR'){
       console.log('get admin')
+      this.userService.getUser(user).subscribe(
+        data => {
+          console.log(data);
+              
+          this.person = data;
+        }
+      );
       
     }
     else if(role=="SUBJECT_TEACHER"){
@@ -74,8 +81,8 @@ export class ProfileComponent implements OnInit {
       this.changedPwd=true;
      }
      else{
-  
-     console.log('Pwd didnt match');
+      this.toastr.warning(`Passwords didnt match`);
+     console.log(`Pwd didnt match `);
 
     }
    //   //  

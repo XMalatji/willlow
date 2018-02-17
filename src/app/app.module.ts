@@ -75,9 +75,10 @@ import { ViewComponent } from './comps/class-comp/view/view.component';
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
 
    
-       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent, StudentslistComponent, AddteacherComponent
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent,
+        StudentslistComponent, AddteacherComponent, AddstudentComponent,
 
-      AddstudentComponent, CurriculumViewComponent,
+       CurriculumViewComponent
 
      
  
