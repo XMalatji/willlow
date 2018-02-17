@@ -16,6 +16,7 @@ import { LoginComponent } from '@app/comps/login/login.component';
 import { StudentslistComponent } from './comps/studentslist/studentslist.component';
 import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
 import { AddteacherComponent } from '@app/comps/addteacher/addteacher.component';
+import { CurriculumlistComponent } from '@app/curriculumlist/curriculumlist.component';
 
 
 
@@ -28,6 +29,13 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
+    data: {
+      title: 'Settings'
+    }
+  },
+  {
+    path: 'curriculumlist',
+    component: CurriculumlistComponent,
     data: {
       title: 'Settings'
     }

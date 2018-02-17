@@ -1,0 +1,15 @@
+.custom-table-heading {
+	align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 8px 20px;
+    color: rgba(0,0,0,.54);
+    background: rgba(0,0,0,.03);
+}

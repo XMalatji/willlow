@@ -1,0 +1,74 @@
+<br/>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+   <div class="docs-example-viewer-title">
+       <div class="docs-example-viewer-title-spacer custom-table-heading">National</div>
+   </div>
+   <br/>
+   <div class="example-container mat-elevation-z8" *ngIf="nationalSource">
+       <mat-table #table [dataSource]="nationalSource">
+
+         <!--- Note that these columns can be defined in any order.
+               The actual rendered columns are set as a property on the row definition" -->
+
+         <!-- Position Column -->
+         <ng-container matColumnDef="schoolGrade">
+           <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
+           <mat-cell *matCellDef="let element"> {{element.schoolGrade}} </mat-cell>
+         </ng-container>
+
+         <!-- Name Column -->
+         <ng-container matColumnDef="gradeSubjects">
+           <mat-header-cell *matHeaderCellDef> Subjects </mat-header-cell>
+           <mat-cell *matCellDef="let element"> 
+             <span *ngFor="let elem of element.gradeSubjects">
+               {{elem.name}}
+             </span>
+             </mat-cell>
+         </ng-container>
+
+     
+
+       
+
+         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+       </mat-table>
+     </div>
+</div>
+
+<div class="col-md-6">
+   <div class="docs-example-viewer-title">
+       <div class="docs-example-viewer-title-spacer custom-table-heading">Cambridge</div>
+   </div>
+   <br/>
+   <div class="example-container mat-elevation-z8" *ngIf="cambridgeSource">
+     <mat-table #table [dataSource]="cambridgeSource">
+
+       <!--- Note that these columns can be defined in any order.
+             The actual rendered columns are set as a property on the row definition" -->
+
+       <!-- Position Column -->
+       <ng-container matColumnDef="schoolGrade">
+         <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
+         <mat-cell *matCellDef="let element"> {{element.schoolGrade}} </mat-cell>
+       </ng-container>
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="gradeSubjects">
+         <mat-header-cell *matHeaderCellDef> Subjects </mat-header-cell>
+         <mat-cell *matCellDef="let element"> 
+           <span *ngFor="let elem of element.gradeSubjects">
+             {{elem.name}}
+           </span>
+           </mat-cell>
+       </ng-container>
+
+       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+     </mat-table>
+   </div>
+</div>
+</div>
+</div>
