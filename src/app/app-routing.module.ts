@@ -17,6 +17,7 @@ import { StudentslistComponent } from './comps/studentslist/studentslist.compone
 import { AddstudentComponent } from '@app/comps/student/addstudent/addstudent.component';
 import { AddteacherComponent } from '@app/comps/addteacher/addteacher.component';
 import { CurriculumlistComponent } from '@app/curriculumlist/curriculumlist.component';
+import { TeachersDashboardComponent } from '@app/comps/teachers-dashboard/teachers-dashboard.component';
 
 
 
@@ -29,6 +30,13 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
+    data: {
+      title: 'Settings'
+    }
+  },
+  {
+    path: 'teachers-dashboard',
+    component: TeachersDashboardComponent,
     data: {
       title: 'Settings'
     }

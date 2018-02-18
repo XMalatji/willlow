@@ -45,6 +45,7 @@ import { MatPaginator } from '@angular/material';
 import { AddteacherComponent } from './comps/addteacher/addteacher.component';
 import { CurriculumViewComponent } from './comps/curriculum/view/view.component';
 import { CurriculumlistComponent } from './curriculumlist/curriculumlist.component';
+import { TeachersDashboardComponent } from './comps/teachers-dashboard/teachers-dashboard.component';
 
 
 
@@ -78,7 +79,8 @@ import { CurriculumlistComponent } from './curriculumlist/curriculumlist.compone
         ForgotpasswordComponent, StudentslistComponent, AddteacherComponent,
       AddstudentComponent, CurriculumViewComponent,
        SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent,
-        CurriculumlistComponent
+        CurriculumlistComponent,
+        TeachersDashboardComponent
     ],
   providers: [  AuthguardGuard, UserService, TeachersService, LookupDataService, ClassService, MatPaginator,
     {
