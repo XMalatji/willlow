@@ -31,56 +31,60 @@
                       </div>
                     </div> 
 
+                    <div class="row">
+                      <div class="col-12">
+                          <mat-form-field>
+                              <mat-select placeholder="Select Term">
+                                <mat-option value="option">Term one</mat-option>
+                                <mat-option value="option">Term two</mat-option>
+                                <mat-option value="option">Term three</mat-option>
+                                <mat-option value="option">Term four</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </div>
+                    </div>  
+                    
                     <div class="example-container mat-elevation-z8">
                         <mat-table #table [dataSource]="dataSource">
                       
-                          <!-- Checkbox Column -->
-                          <ng-container matColumnDef="select">
-                            <mat-header-cell *matHeaderCellDef>
-                              <mat-checkbox (change)="$event ? masterToggle() : null"
-                                            [checked]="selection.hasValue() && isAllSelected()"
-                                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-                              </mat-checkbox>
-                            </mat-header-cell>
-                            <mat-cell *matCellDef="let row">
-                              <mat-checkbox (click)="$event.stopPropagation()"
-                                            (change)="$event ? selection.toggle(row) : null"
-                                            [checked]="selection.isSelected(row)">
-                              </mat-checkbox>
-                            </mat-cell>
+                          <!--- Note that these columns can be defined in any order.
+                                The actual rendered columns are set as a property on the row definition" -->                                
+                          <!-- fullname Column -->
+                          <ng-container matColumnDef="fullname">
+                            <mat-header-cell *matHeaderCellDef> Full name</mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.fullname}} </mat-cell>
                           </ng-container>
                       
-                          <!-- Position Column -->
-                          <ng-container matColumnDef="position">
-                            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                          <!-- grade Column -->
+                          <ng-container matColumnDef="grade">
+                            <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
                           </ng-container>
                       
-                          <!-- Name Column -->
-                          <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                          <!-- term Column -->
+                          <ng-container matColumnDef="term">
+                            <mat-header-cell *matHeaderCellDef> Term </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.term}} </mat-cell>
                           </ng-container>
                       
-                          <!-- Weight Column -->
-                          <ng-container matColumnDef="weight">
-                            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                          <!-- mark Column -->
+                          <ng-container matColumnDef="mark">
+                            <mat-header-cell *matHeaderCellDef> Mark </mat-header-cell>
+                            <mat-cell *matCellDef="let element" contenteditable="true"> {{element.mark}} </mat-cell>
                           </ng-container>
-                      
-                          <!-- Symbol Column -->
-                          <ng-container matColumnDef="symbol">
-                            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-                          </ng-container>
+
+                          <!-- comment Column -->
+                          <ng-container matColumnDef="comment">
+                              <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+                              <mat-cell *matCellDef="let element" contenteditable="true"> {{element.comment}} </mat-cell>
+                            </ng-container>
                       
                           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                          <mat-row *matRowDef="let row; columns: displayedColumns;"
-                                   (click)="selection.toggle(row)">
-                          </mat-row>
+                          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                         </mat-table>
-                      </div>                     
+                      </div>                    
                  <br />
+                 <button mat-button mat-raised-button class="step-wizard-btn-blue">Save</button><br /><br />
               </div>
            </div>
         </div>
