@@ -1,7 +1,7 @@
 <mat-sidenav-container>
 
   <mat-sidenav #sidenav mode="push">
-    <mat-nav-list *ngIf="userService.isAuthenticated">
+    <mat-nav-list *ngIf="userService.loggedIn()">
 
       <mat-accordion>
         <mat-expansion-panel>
@@ -86,7 +86,7 @@
 
     <div class="toolbar">
       <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.open()">
+        <button  *ngIf="userService.loggedIn()" mat-icon-button (click)="sidenav.open()">
           <mat-icon>menu</mat-icon>
         </button>
 
