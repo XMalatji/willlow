@@ -42,6 +42,7 @@
     "angular2-fullcalendar": "^1.0.19",
     "angular2-jwt": "^0.2.3",
     "angular2-moment": "^1.8.0",
+    "angularx-calendar": "^0.1.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",

@@ -14,7 +14,11 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   isAuthenticated:boolean = false;
-
+  eventList = {
+    0: 'EventOne',
+    1: 'EventTwo',
+    2: 'EventThree'
+  }
   // students = [ { "name":"Phaseka"}, {"name":"John"}]
 
   // students$:Observable<any[]>;

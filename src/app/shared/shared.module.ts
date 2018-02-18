@@ -25,6 +25,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { CalendarModule } from 'angularx-calendar';
 
 
 
@@ -33,7 +34,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
   imports: [
     CommonModule,
     FormsModule,
-    
+    CalendarModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -60,6 +61,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
   exports: [
     CommonModule,
     FormsModule,
+    CalendarModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatMenuModule,

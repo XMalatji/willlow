@@ -8,12 +8,10 @@
 
 <div  *ngIf="userService.loggedIn()" class="container">
    <div class="row">
-       <div id='calendar'></div>
+       <div id='calendar'>
+          
+       </div>
    </div>
 
-
-<div class="row justify-content-center mt-5 ">
- 
-<app-teachers-dashboard></app-teachers-dashboard>
-
 </div>
+<ngx-calendar [eventList]="eventList"></ngx-calendar>
