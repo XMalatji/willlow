@@ -117,7 +117,7 @@ export class CurriculumComponent implements OnInit {
 
     this.classService.getCambridgeCurriculum().subscribe(
       data => {
-        console.log('cambridge ###' + JSON.stringify(data));
+       // console.log('cambridge ###' + JSON.stringify(data));
         this.cambridgeSource = data;
       },
       err => {
@@ -129,7 +129,7 @@ export class CurriculumComponent implements OnInit {
 
     this.classService.getNationalCurriculum().subscribe(
       data => {
-        console.log('cambridge ###' + JSON.stringify(data));
+      //  console.log('cambridge ###' + JSON.stringify(data));
         this.nationalSource = data;
       },
       err => {
@@ -153,7 +153,7 @@ export class CurriculumComponent implements OnInit {
     body["gradeSubjects"] = this.subjects;
     this.classService.addNewCurriculum(body).subscribe(
       data => {
-        console.log('Success @@@@@@@@' + JSON.stringify(data));
+       // console.log('Success @@@@@@@@' + JSON.stringify(data));
         this.toastr.success(`Successfully added curriculum.`);
         this.addCurriculumMode = false;
       },
