@@ -1,5 +1,6 @@
 <div class="container">
-    <form>
+    <form name="gradeForm" [formGroup]="gradeForm" (ngSubmit)="gradeStudent()" novalidate>
+   
         <div class="container">
            <div class="row mt-4">
               <div class="col-12">   
@@ -7,11 +8,11 @@
                     <div class="col-12">
                         <mat-form-field>
                             <mat-select placeholder="Select grade">
-                              <mat-option value="option">Grade one</mat-option>
-                              <mat-option value="option">Grade two</mat-option>
-                              <mat-option value="option">Grade three</mat-option>
-                              <mat-option value="option">Grade four</mat-option>
-                              <mat-option value="option">Grade five</mat-option>
+                              <mat-option value="option" (click)="filterGrade(1)">Grade one</mat-option>
+                              <mat-option value="option" (click)="filterGrade(2)">Grade two</mat-option>
+                              <mat-option value="option" (click)="filterGrade(3)">Grade three</mat-option>
+                              <mat-option value="option" (click)="filterGrade(4)">Grade four</mat-option>
+                              <mat-option value="option" (click)="filterGrade(5)">Grade five</mat-option>
                             </mat-select>
                           </mat-form-field>
                     </div>
@@ -34,37 +35,37 @@
                     <div class="row">
                       <div class="col-12">
                           <mat-form-field>
-                              <mat-select placeholder="Select Term">
-                                <mat-option value="option">Term one</mat-option>
-                                <mat-option value="option">Term two</mat-option>
-                                <mat-option value="option">Term three</mat-option>
-                                <mat-option value="option">Term four</mat-option>
+                              <mat-select formControlName="termCtrl" placeholder="Select Term">
+                                <mat-option value="1">Term one</mat-option>
+                                <mat-option value="2">Term two</mat-option>
+                                <mat-option value="3">Term three</mat-option>
+                                <mat-option value="4">Term four</mat-option>
                               </mat-select>
                             </mat-form-field>
                       </div>
                     </div>  
                     
                     <div class="example-container mat-elevation-z8">
-                        <mat-table #table [dataSource]="dataSource">
+                        <mat-table #table [dataSource]="studentSource">
                       
                           <!--- Note that these columns can be defined in any order.
                                 The actual rendered columns are set as a property on the row definition" -->                                
                           <!-- fullname Column -->
-                          <ng-container matColumnDef="fullname">
+                          <ng-container matColumnDef="givenName">
                             <mat-header-cell *matHeaderCellDef> Full name</mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.fullname}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.givenName }}  {{element.familyName }}</mat-cell>
                           </ng-container>
                       
                           <!-- grade Column -->
                           <ng-container matColumnDef="grade">
                             <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{element.schoolGrade}} </mat-cell>
                           </ng-container>
                       
                           <!-- term Column -->
                           <ng-container matColumnDef="term">
                             <mat-header-cell *matHeaderCellDef> Term </mat-header-cell>
-                            <mat-cell *matCellDef="let element"> {{element.term}} </mat-cell>
+                            <mat-cell *matCellDef="let element"> {{termCtrl.value}} </mat-cell>
                           </ng-container>
                       
                           <!-- mark Column -->

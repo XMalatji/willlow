@@ -37,6 +37,7 @@ const routes: Routes = [
   {
     path: 'teachers-dashboard',
     component: TeachersDashboardComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Settings'
     }
@@ -80,6 +81,7 @@ const routes: Routes = [
   {
     path: 'students',
     component: StudentsComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Students'
     }

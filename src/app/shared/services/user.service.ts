@@ -142,7 +142,7 @@ export class UserService {
   logout(){
     this.isAuthenticated = false;
     window.localStorage.clear();
-    this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', httpOptions);
+    return this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/login/v1', httpOptions);
   }
   addStudent(body : {}) {
 
