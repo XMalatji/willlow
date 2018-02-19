@@ -7,7 +7,6 @@
     line-height: $size;
   }
 
-
   .profile-pic-div{
     border:1px solid #999;
   }
@@ -18,7 +17,6 @@
        
       }
     
-  
       .full-width{
           width:100%;
       }
@@ -26,3 +24,172 @@
       .half-width{
         width:40%;
     }
+
+    /*-- About me --*/
+.about-me {
+	padding:0;
+	margin:0 auto;
+}
+.about-me h3 {
+	color:#A1B3A4;
+	font-size:30px;
+	font-family: 'Cinzel', serif;
+	line-height:25px;
+	font-weight:bold;
+	padding: 67px 0 55px;
+}
+img.img-responsive {
+    margin: auto;
+}
+.mydetails , .myskills {
+	background-color: #ffdd023b;
+}
+.mydetails {
+	padding:6.3em 0;
+}
+.mydetails h3 {
+	color:#000;
+	padding: 1em 0;
+	font-family: 'Cinzel', serif;
+	font-size:20px;
+	line-height:25px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mydetails p {
+	font-size:20px;
+	line-height:25px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mydetails .social-icons {
+	padding: 1.3em 0 0;
+	margin:0;
+}
+.mydetails .social-icons  a span {
+	display:inline-block;
+	width:40px;
+	height:40px;
+	// background:url(http://via.placeholder.com/350x150) no-repeat 0px 0px;
+}
+.mydetails .social-icons  span.facebook {
+	background-position:0px 0px;
+}
+.mydetails .social-icons span.twitter {
+	background-position:-40px 0px;
+}
+.mydetails .social-icons span.linkedin {
+	background-position:-80px 0px;
+}
+.mydetails .social-icons span.googleplus {
+	background-position:-120px 0px;
+}
+.myskills {
+	padding:2em 0;
+}
+.myskills h3 {
+	color:#000;
+	padding:25px;
+	font-family: 'Cinzel', serif;
+	font-size:25px;
+	line-height:25px;
+  font-weight:bold;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.myskills p {	
+	padding:15px;
+	font-size:17px;
+	line-height:25px;
+  font-weight:400;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	padding: 10px;
+	border-top:none;
+}
+.skill-info {
+	padding:1em;
+}
+.skill-info h4 {
+	margin-left:6%;
+	font-family: 'Cinzel', serif;
+	font-size:18px;
+	line-height:25px;
+	font-weight:bold;
+}
+.skill-info p {
+	padding:0;
+}
+span.longline1 {
+	width:267px;
+	height:2px;
+	display:inline-block;
+	background-color:#A1B3A4;
+	margin-top: 3%;
+}
+span.shortline1 {
+	width:33px;
+	height:2px;
+	display:inline-block;
+	background-color:#fff;
+	margin-top: 3%;
+}
+span.longline2 {
+	width:270px;
+	height:2px;
+	display:inline-block;
+	background-color:#A1B3A4;
+	margin-top: 3%;
+}
+span.shortline2 {
+	width:30px;
+	height:2px;
+	display:inline-block;
+	background-color:#fff;
+	margin-top: 3%;
+}
+span.longline3 {
+	width:285px;
+	height:2px;
+	display:inline-block;
+	background-color:#A1B3A4;
+	margin-top: 3%;
+}
+span.shortline3 {
+	width:15px;
+	height:2px;
+	display:inline-block;
+	background-color:#fff;
+	margin-top: 3%;
+}
+span.longline4 {
+	width:276px;
+	height:2px;
+	display:inline-block;
+	background-color:#A1B3A4;
+	margin-top: 3%;
+}
+span.shortline4 {
+	width:24px;
+	height:2px;
+	display:inline-block;
+	background-color:#fff;
+	margin-top: 3%;
+}
+span.longline5 {
+	width:288px;
+	height:2px;
+	display:inline-block;
+	background-color:#A1B3A4;
+	margin-top: 3%;
+}
+span.shortline5 {
+	width:12px;
+	height:2px;
+	display:inline-block;
+	background-color:#fff;
+	margin-top: 3%;
+}
+
+.step-wizard-btn-blue {
+  background: #293592;
+  color: #fff;
+}
