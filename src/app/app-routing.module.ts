@@ -24,7 +24,7 @@ import { TeachersDashboardComponent } from '@app/comps/teachers-dashboard/teache
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
