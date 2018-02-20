@@ -115,10 +115,10 @@ export class TeachersViewComponent implements OnInit {
       this._data
       .takeWhile(() => !this.groupTeachers)
       .subscribe(x => {
-        setTimeout(function(){ 
+     
           this.groupTeachers=x;
           this.appLoading=false;
-        }, 3000);
+  
      
          
           //console.log('x'+JSON.stringify(this.groupTeachers))

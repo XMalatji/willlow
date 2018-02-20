@@ -3,6 +3,8 @@
   <mat-sidenav #sidenav mode="push">
     <mat-nav-list *ngIf="userService.loggedIn()">
 
+
+      <div *ngIf='userService.getRole() !== "SUBJECT_TEACHER"'>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header class="mt-65">
@@ -33,7 +35,7 @@
             <div>
               <ul class="menu-ul">
                 <li><a href="#" routerLink="/classes" (click)="sidenav.close()">Create Class</a></li>                  
-                <li><a href="#" routerLink="/classes" (click)="sidenav.close()">View Class</a></li>
+                <li><a href="#" routerLink="/viewclasses" (click)="sidenav.close()">View Class</a></li>
                 <!-- <li>Edit Class</li> -->
               </ul>
             </div>
@@ -77,7 +79,7 @@
                      
                 </mat-expansion-panel>
               </mat-accordion>
-
+</div>
               <mat-accordion *ngIf='userService.getRole()=="SUBJECT_TEACHER"'>
                   <mat-expansion-panel>
                     <mat-expansion-panel-header>
@@ -89,7 +91,7 @@
                     <div>
                       <ul class="menu-ul">
                           <li><a href="#" routerLink="/teachers-dashboard" (click)="sidenav.close()">Grade Class</a></li>
-                          <li><a href="#" routerLink="/viewclasses" (click)="sidenav.close()">Grade Class</a></li>
+                          <li><a href="#" routerLink="/viewclasses" (click)="sidenav.close()">View Classes</a></li>
                         <!-- <li><a href="#" routerLink="#" (click)="sidenav.close()">Edit Students</a></li> -->
                       </ul>
                     </div>

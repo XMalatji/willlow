@@ -62,8 +62,7 @@ export class UserService {
   }
 
   getRole() {
-    console.log(`role@@@@@ ${window.localStorage.role}`)
-    return window.localStorage.role;
+   return window.localStorage.role;
   }
   getAdminProfile(){
 
