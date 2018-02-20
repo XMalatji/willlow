@@ -46,6 +46,7 @@ import { AddteacherComponent } from './comps/addteacher/addteacher.component';
 import { CurriculumViewComponent } from './comps/curriculum/view/view.component';
 import { CurriculumlistComponent } from './curriculumlist/curriculumlist.component';
 import { TeachersDashboardComponent } from './comps/teachers-dashboard/teachers-dashboard.component';
+import { ViewComponent } from './comps/class-comp/view/view.component';
 
 
 
@@ -75,7 +76,7 @@ import { TeachersDashboardComponent } from './comps/teachers-dashboard/teachers-
      HomeComponent, LoginComponent, SidebarComponent, TeacherComponent,
       TeachersViewComponent, AModalComponent, ClassCompComponent, CalendarComponent, 
       AddstudentComponent,
-       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent,
+       SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent,ViewComponent,
         ForgotpasswordComponent, StudentslistComponent, AddteacherComponent,
       AddstudentComponent, CurriculumViewComponent,
        SubnavComponent, StudentsComponent, CurriculumComponent, ProfileComponent, ForgotpasswordComponent,

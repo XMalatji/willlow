@@ -38,3 +38,9 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+
+@media only screen and (max-width: 768px) {
+    .curriculum-form-fields {
+        width: 100% !important;
+    }
+}

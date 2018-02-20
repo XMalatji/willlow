@@ -25,7 +25,7 @@ import { ViewComponent } from './comps/class-comp/view/view.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
