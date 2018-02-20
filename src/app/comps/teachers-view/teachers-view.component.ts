@@ -26,7 +26,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./teachers-view.component.scss']
 })
 export class TeachersViewComponent implements OnInit {
-
+  appLoading:boolean = false;
   displayedColumns = ['name', 'surname', 'email','cell'];
   dataSource=[
     {"givenName":"Phaseka"}
@@ -111,11 +111,16 @@ export class TeachersViewComponent implements OnInit {
 
   ngOnInit() {
    
-
+  this.appLoading = true;
       this._data
       .takeWhile(() => !this.groupTeachers)
       .subscribe(x => {
+        setTimeout(function(){ 
           this.groupTeachers=x;
+          this.appLoading=false;
+        }, 3000);
+     
+         
           //console.log('x'+JSON.stringify(this.groupTeachers))
       });
   

@@ -19,6 +19,7 @@ import { LookupDataService } from '../../lookup-data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  appLoading:boolean = false;
   logForm: FormGroup;
   uEmail: FormControl;
   uPassword: FormControl;
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     let user = (this.logForm.value);
-
+    this.appLoading = true;
     let success: boolean = false;
     this.userService.login(this.uEmail.value, this.uPassword.value).subscribe(
       data => {
@@ -61,11 +62,18 @@ export class LoginComponent implements OnInit {
         else {
           console.log('err')
 
+          this.appLoading=false;
+
         }
       },
       err => {
+        this.appLoading=false;
         this.handleError(err);
-      });
+      }),
+
+      () => {
+        this.appLoading = false;
+      };
   }
 
   handleError(err) {

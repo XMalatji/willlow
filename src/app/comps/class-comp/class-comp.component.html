@@ -1,16 +1,8 @@
-<nav mat-tab-nav-bar>
-    <a mat-tab-link (click)="addClassOpen()"> 
-        Add Class
-     </a>
-     <a mat-tab-link (click)="viewClassOpen()"> 
-        View Classes
-     </a>
-
-</nav>
 
 
 
-<form name="addClassForm" *ngIf="addClassMode" [formGroup]="addClassForm" (ngSubmit)="buildClass()" novalidate>
+
+<form name="addClassForm" [formGroup]="addClassForm" (ngSubmit)="buildClass()" novalidate>
   
 <div class="container mt-3">
    <div class="example-container">

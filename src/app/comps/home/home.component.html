@@ -1,5 +1,4 @@
 <div *ngIf="!userService.loggedIn()">
-
    <app-login>
    </app-login>
 </div>
@@ -7,11 +6,8 @@
 
 
 <div  *ngIf="userService.loggedIn()" class="container">
-   <div class="row">
-       <div id='calendar'>
-          
-       </div>
-   </div>
 
+        <ngx-calendar [eventList]="eventList"></ngx-calendar>
+
+ 
 </div>
-<ngx-calendar [eventList]="eventList"></ngx-calendar>
