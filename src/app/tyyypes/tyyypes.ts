@@ -14,7 +14,11 @@
   export interface ITeacher extends IPerson{
 
  
+        assignedClasses: [ {
+          name:string
+        }
         
+        ]
   }
 
 

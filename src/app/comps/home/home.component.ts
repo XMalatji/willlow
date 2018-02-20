@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private store:Store<AppState>,
-    private userService:UserService,
+    public userService:UserService,
     private router:Router
     ) {
 

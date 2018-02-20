@@ -134,12 +134,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout(){
     window.localStorage.clear();
-<<<<<<< HEAD
     this.userService.logout().subscribe();
 
     this.router.navigate(['home'])
-=======
-    this.router.navigate(['login'])
->>>>>>> 6d42eba5b40a1f9de19de63bcfbb653f149afc55
   }
 }

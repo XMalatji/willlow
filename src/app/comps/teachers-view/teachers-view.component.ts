@@ -98,7 +98,7 @@ export class TeachersViewComponent implements OnInit {
     {value: '3', viewValue: 'English'},
   ];
 
-  selectedTeacher:IPerson;
+  selectedTeacher:ITeacher;
   @ViewChild('modalDiv') modalDiv: ElementRef;
   @ViewChild(AModalComponent) modComp: AModalComponent;
   @Output() openModal = new EventEmitter();
