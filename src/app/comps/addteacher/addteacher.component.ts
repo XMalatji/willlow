@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { TeachersService } from '@app/services/teachers.service';
 import { IPerson } from '../../tyyypes/tyyypes';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +20,11 @@ export class AddteacherComponent implements OnInit {
   familyName: FormControl;
   retTeacher:IPerson;
   
-  constructor(private teacherService:TeachersService) { 
+  constructor(
+    private teacherService:TeachersService,
+      private toastr: ToastrService,
+      private router: Router
+  ) { 
 
     this.emailAddress = new FormControl("", [Validators.required]);
     this.cellphone = new FormControl("", [Validators.required]);
@@ -56,7 +62,8 @@ export class AddteacherComponent implements OnInit {
       data => {
         if(data){
           console.log('successfully added teacher');
-        
+          this.router.navigate(['home']);
+          this.toastr.success(`Successfully added teacher.`);
           this.retTeacher=data;
          }
         else{

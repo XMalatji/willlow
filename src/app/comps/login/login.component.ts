@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '@app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { LookupDataService } from '../../lookup-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<any>,
     public userService: UserService,
-
+    private toastr: ToastrService,
     private _router: Router,
     public lookupDataService: LookupDataService
   ) {
@@ -61,13 +62,14 @@ export class LoginComponent implements OnInit {
         }
         else {
           console.log('err')
-
+          this.toastr.error(`Invalid credentials `);
           this.appLoading=false;
 
         }
       },
       err => {
         this.appLoading=false;
+        this.toastr.error(`Server error`);
         this.handleError(err);
       }),
 

@@ -111,7 +111,7 @@ export class TeachersViewComponent implements OnInit {
 
   ngOnInit() {
    
-  this.appLoading = true;
+
       this._data
       .takeWhile(() => !this.groupTeachers)
       .subscribe(x => {

@@ -123,6 +123,7 @@ export class ClassCompComponent implements OnInit {
    this.classService.addClass(body).subscribe(
      data => {
        console.log('Success @@@@@@@@' + JSON.stringify(data));
+       this.router.navigate(['home']);
        this.toastr.success(`Successfully added class.`);
        this.addClassMode=false;
      },
