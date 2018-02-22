@@ -182,12 +182,17 @@ export class UserService {
 
 
 
-    getStudents():Observable<IStudent[]>{
-      // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
-        //return this.teacher;
-        
-         return this._http.get<IStudent[]>('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher/all', httpOptions);
+    getStudents(grade:string):Observable<IStudent[]>{
+    
+        if(grade){
+          return this._http.get<IStudent[]>('http://kariliner.dedicated.co.za:8080/willow-schools/api/student/school-grade?school-grade='+grade, httpOptions);
       
+        }
+        else{
+          return this._http.get<IStudent[]>('http://kariliner.dedicated.co.za:8080/willow-schools/api/student/all', httpOptions);
+      
+        }
+     
   }
 
   ngOnInit() {

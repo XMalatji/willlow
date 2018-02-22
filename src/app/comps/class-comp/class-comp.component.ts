@@ -101,11 +101,11 @@ export class ClassCompComponent implements OnInit {
 
     // this.dataSource = [{ "grade": "1", "className": "1A", "classTeacher": "Ms Coetzee" }];
   }
-  showGrade(grade: number) {
+  showGrade(grade: string) {
     console.log(grade);
-    this.userService.getStudents().subscribe(
+    this.userService.getStudents(grade).subscribe(
       data => {
-        //console.log(data)
+        console.log(data)
         this.students = data;
       }
 

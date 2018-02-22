@@ -31,6 +31,7 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Settings'
     }
@@ -46,6 +47,7 @@ const routes: Routes = [
   {
     path: 'curriculumlist',
     component: CurriculumlistComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Settings'
     }
@@ -53,6 +55,7 @@ const routes: Routes = [
   {
     path: 'addteacher',
     component: AddteacherComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Settings'
     }
@@ -60,6 +63,7 @@ const routes: Routes = [
   {
     path: 'addstudent',
     component: AddstudentComponent,
+    canActivate: [AuthguardGuard],
     data: {
       title: 'Settings'
     }
