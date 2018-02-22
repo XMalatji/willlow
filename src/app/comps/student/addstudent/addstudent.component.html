@@ -1,41 +1,41 @@
 <form name="addTeacherForm" [formGroup]="addStudentForm" (ngSubmit)="addStudent()" novalidate>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-8">
-        <mat-form-field class="full-width">
+      <div class="col-12">
+        <mat-form-field class="full-width-responsive">
           <mat-select placeholder="Academic Year">
             <mat-option *ngFor="let academicYear of academicYears" [value]="academicYear.value">
               {{ academicYear.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <input matInput placeholder="Student name" formControlName="givenName">
         </mat-form-field>
         <br />
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <input matInput placeholder="Surname" formControlName="familyName">
         </mat-form-field>
         <br />
-        <mat-form-field>
+        <mat-form-field class="full-width-responsive">
           <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" placeholder="Date of birth">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <br />
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <input matInput placeholder="Student ID" formControlName="studentId" value="">
         </mat-form-field>
         <br />
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <input matInput placeholder="Cellphone number" formControlName="cellphone" value="">
         </mat-form-field>
         <br />
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <input matInput placeholder="Email address" formControlName="emailAddress" value="">
         </mat-form-field>
         <br/>
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <mat-select placeholder="Student grade" formControlName="schoolGrade">
             <mat-option *ngFor="let grade of grades" [value]="grade.value">
               {{ grade.viewValue }}
@@ -43,7 +43,7 @@
           </mat-select>
         </mat-form-field>
         <br />
-        <mat-form-field class="full-width">
+        <mat-form-field class="full-width-responsive">
           <mat-select placeholder="Student gender" formControlName="gender">
             <mat-option *ngFor="let gender of genders" [value]="gender.value">
               {{ gender.viewValue }}
