@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { User } from '@app/tyyypes/user';
 import { IStudent, ICurriculum } from '../tyyypes/tyyypes';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -38,8 +39,9 @@ export class ClassService {
   // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');
     //return this.teacher;
     
-     return this._http.get<ICurriculum[]>
-     ('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering/curriculum?curriculum=CAMBRIDGE_CURRICULUM', httpOptions);
+    return this._http.get<ICurriculum[]>
+     ('http://kariliner.dedicated.co.za:8080/willow-schools/api/curriculum-grade-subject-offering/curriculum?curriculum=CAMBRIDGE_CURRICULUM');
+    
   }
   getNationalCurriculum():Observable<ICurriculum[]>{
     // this.teacher =  this._http.get('http://kariliner.dedicated.co.za:8080/willow-schools/api/teacher?email=xmalatji@gmail.com');

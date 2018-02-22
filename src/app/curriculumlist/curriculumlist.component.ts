@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ICurriculum } from '@app/tyyypes/tyyypes';
 import { ClassService } from '@app/services/class.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'anms-curriculumlist',
@@ -26,7 +27,7 @@ export class CurriculumlistComponent implements OnInit {
 
     this.classService.getCambridgeCurriculum().subscribe(
       data => {
-      //  console.log('cambridge ###' + JSON.stringify(data));
+       console.log('cambridge ###' + JSON.stringify(data));
         this.cambridgeSource = data;
       },
       err => {

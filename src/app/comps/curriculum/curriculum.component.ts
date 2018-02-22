@@ -5,6 +5,7 @@ import { MatChipInputEvent } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
 import { ClassService } from '../../services/class.service';
 import { ICurriculum } from '../../tyyypes/tyyypes';
+import { Observable } from 'rxjs/Rx';
 
 
 
@@ -80,9 +81,9 @@ export class CurriculumComponent implements OnInit {
 
   displayedColumns = ['schoolGrade', 'gradeSubjects'];
 
-  cambridgeSource: ICurriculum[];
+  cambridgeSource:ICurriculum[];
 
-  nationalSource: ICurriculum[];
+  nationalSource:ICurriculum[];
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -117,8 +118,8 @@ export class CurriculumComponent implements OnInit {
 
     this.classService.getCambridgeCurriculum().subscribe(
       data => {
-       // console.log('cambridge ###' + JSON.stringify(data));
-        this.cambridgeSource = data;
+        console.log('cambridge ###' + JSON.stringify(data));
+       this.cambridgeSource = data;
       },
       err => {
         console.log(`Server error | ${err}`);
@@ -156,12 +157,16 @@ export class CurriculumComponent implements OnInit {
        // console.log('Success @@@@@@@@' + JSON.stringify(data));
         this.toastr.success(`Successfully added curriculum.`);
         this.addCurriculumMode = false;
+        this.ngOnInit();
       },
       err => {
         console.log(`Server error | Obj ${JSON.stringify(body)}`);
         this.toastr.error(`an error happened - curriculum.`);
       }
     );
+
+
+    
   }
   add(event: MatChipInputEvent): void {
     let input = event.input;
